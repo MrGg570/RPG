@@ -8,3 +8,8 @@
 - [ ] Définir des monstres
 - [ ] Système de combat
 - [ ] Histoire
+
+### Modules
+
+- `pyinput` pour track les touches pressées
+- `os` pour clear la console (et print)?
