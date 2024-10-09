@@ -11,5 +11,5 @@
 
 ### Modules
 
-- `pyinput` pour track les touches pressées
+- `keyboard` pour track les touches pressées
 - `os` pour clear la console (et print)?
