@@ -2,7 +2,7 @@
 
 ⚔️ RPG en interface textuel 
 
-## To do liste:
+## To do list:
 
 - [ ] Définir un personnage
 - [ ] Définir des monstres
@@ -13,3 +13,7 @@
 
 - `keyboard` pour track les touches pressées
 - `os` pour clear la console (et print)?
+
+### BONUS To Do List
+
+- [ ] Affichage graphique avancé
