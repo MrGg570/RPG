@@ -20,3 +20,4 @@
 
 - [x] `keyboard` pour track les touches pressées
 - [ ] `os` pour clear la console (et print)?
+- [ ] `rich` ou `textual` pour l'interface graphique ?
