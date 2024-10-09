@@ -1,6 +1,8 @@
 # RPG
 
-⚔️ RPG en interface textuel 
+⚔️ RPG en interface textuel dans la console
+
+100% en python
 
 ## To do list:
 
@@ -9,12 +11,12 @@
 - [ ] Système de combat
 - [ ] Histoire
 
-### Modules
-
-- `keyboard` pour track les touches pressées
-- `os` pour clear la console (et print)?
-
 ### BONUS To Do List
 
 - [ ] Affichage graphique avancé
-- [x] Inputs avancés
+- [ ] Inputs avancés
+
+### Modules
+
+- [x] `keyboard` pour track les touches pressées
+- [ ] `os` pour clear la console (et print)?
