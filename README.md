@@ -17,3 +17,4 @@
 ### BONUS To Do List
 
 - [ ] Affichage graphique avancé
+- [x] Inputs avancés
