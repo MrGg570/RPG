@@ -12,4 +12,8 @@ Le jeu respecte quelques règles de fonctionnement simple. Le joueur incarne un 
 
 ## Structures de données
 
+**__Table des matières:__**
+
+(Classe X)[###-Classe-X]
+
 ### Classe X

@@ -22,5 +22,5 @@ class Character:
         style = "bold green" if self.name == 'Joueur' else "bold red"
         length = 20
         fullbarlength = ceil(self.pv / self.maxpv * length)
-        bar = f"[{style}]{self.name}[/{style}] : {self.pv}/{self.maxpv} [green on green]{fullbarlength * ' '}[/green on green][red on red]{(length - fullbarlength) * ' '}[/red on red]"
+        bar = f"[{style}]{self.name}[/{style}] [yellow](lvl. 0)[/yellow] [green on green]{fullbarlength * ' '}[/green on green][red on red]{(length - fullbarlength) * ' '}[/red on red] {self.pv}/{self.maxpv}"
         return bar
