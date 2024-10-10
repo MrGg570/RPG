@@ -1,4 +1,18 @@
-bjets={"Dégats":{'Torche':"2 atk",'Epée de légende':"5 atk",' Dague démoniaque':"7 atk" ,'Fouchette':"1 degat","Turbo-marteau": "9atk"},
+class Stuf:
+    def __init__(self):
+        self.Stuf={"Dégats":"","Vitesses":"","Defense":""}
+        self.Objets={"Dégats":{'Torche':"2 atk",'Epée de légende':"5 atk",' Dague démoniaque':"7 atk" ,'Fouchette':"1 degat","Turbo-marteau": "9atk"},
         "Specials":{'Objets mystères':"2 objet aléatoire","Bouclier inébranlable": "9 def mais pas de bonus vitesse","Spatule dorée":"6 pour toutes stats"},
         "Vitesses":{'Botte draconique':"5 vitesse","Geox qui court vite":"8 vitesse", 'Botte du vieux pêcheur':"1 vitesse","vielle saabate":"3 vitesse"},
         "Defense":{"Casque du roi arthur":"6 def","Chapeau de paille" : "2def","Casserole":"1 def","Bouclier doré":"5 def"}}
+    def ajouterobj(self,objet):
+        self.Stuf+=Stuf[self.Objets.keys()]
+    def afficherobjs(self):
+        print("Voici vos objets:\n" ,self.Stuf)
+    
+class Stat:
+    def __init__(self, pv:int, atk:int, arm: int=0) -> None:
+        self.pv = pv
+        self.atk = atk
+        self.arm = arm
+    
