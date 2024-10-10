@@ -1,5 +1,20 @@
 # Compte-rendu
 
+**__Table des matières:__**
+
+- [Le projet "en gros"](#détails-du-projet)
+
+ - [Quest'ce qu'est ce projet?](#jeu-de-rôle-rpg)
+ - [Règles du jeu/projet](#règles)
+
+
+- [Structures de données](#structures-de-données)
+
+- [Classe X](#classe-x)
+
+- [Classe Y](#classe-y)
+
+
 ## Détails du projet
 
 ### Jeu de rôle (RPG)
@@ -12,8 +27,10 @@ Le jeu respecte quelques règles de fonctionnement simple. Le joueur incarne un 
 
 ## Structures de données
 
-**__Table des matières:__**
-
-(Classe X)[###-Classe-X]
-
 ### Classe X
+
+Méthodes, attributs, fonctionnement
+
+### Classe Y
+
+Méthodes, attributs, fonctionnement
