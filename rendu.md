@@ -2,17 +2,17 @@
 
 **__Table des matières:__**
 
-- [Le projet "en gros"](#détails-du-projet)
+* [Le projet "en gros"](#détails-du-projet)
 
  - [Quest'ce qu'est ce projet?](#jeu-de-rôle-rpg)
+ 
  - [Règles du jeu/projet](#règles)
 
+* [Structures de données](#structures-de-données)
 
-- [Structures de données](#structures-de-données)
+ - [Classe X](#classe-x)
 
-- [Classe X](#classe-x)
-
-- [Classe Y](#classe-y)
+ - [Classe Y](#classe-y)
 
 
 ## Détails du projet
