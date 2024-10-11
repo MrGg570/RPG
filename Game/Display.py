@@ -1,4 +1,4 @@
-from Inputs.inputHandler import Input
+from Inputs.inputHandler import Input, sleep
 from os import system
 
 class Display:
@@ -11,13 +11,17 @@ class Display:
         self.player = player
         self.enemy = enemy
 
-    def rfrsh(self) -> None:
+    def rfrsh(self, prompt: str = "") -> None:
         self.clear()
         self.console.print(self.player.pvbar()+"\n")
         self.console.print(self.enemy.pvbar()+"\n")
+        self.console.print(prompt)
 
-    def menu(self, options:list) -> str:
+    def menu(self, options:list) -> int:
         return self.input.menu(options)
+    
+    def waitinput(self) -> None:
+        pass
 
 
     

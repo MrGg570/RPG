@@ -13,43 +13,19 @@ enemy = Build.build('enemy', 100,5)
 
 display = Display(console)
 
-
-# def display():
-#     console.print(player.pvbar()+'\n')
-#     console.print(enemy.pvbar()+'\n')
-
-# while True:
-#     clear()
-#     assert player.pv > 0, "Joueur mort!"
-#     display()
-#     print("0 - Attaquer\n1 - Ne rien faire")
-#     action = input(">>> ")
-#     clear()
-#     match action:
-#         case "0":
-#             display()
-#             print(f"Vous attaquez {enemy.name}")
-#             player.attaquer(enemy)
-#             input()
-#         case "1":
-#             display()
-#             print(f"Vous ne faites rien...")
-#             input()
-#         case _:
-#             display()
-#             print(f"Vous {action}!... Mais ça veut dire quoi?")
-#             input()
-#     assert enemy.pv > 0, "Enemy mort!"
-#     clear()
-#     display()
-#     print(f"{enemy.name} vous attaque!")
-#     enemy.attaquer(player)
-#     input()
-
-
-
-options = ["Option 1", "Option 2", "Option 3"]
 display.initdisplay(player, enemy)
-choice = display.menu(options)
-print(choice)
-input()
+
+while True:
+    assert player.pv > 0, "Joueur mort!"
+    display.rfrsh()
+    actions = ["Attaquer", "Ne rien faire"]
+    action = display.menu(actions)
+    match action:
+        case 0:
+            display.rfrsh(f"Vous attaquez {enemy.name}")
+            player.attaquer(enemy)
+        case 1:
+            display.rfrsh(f"Vous ne faites rien...")
+    assert enemy.pv > 0, "Enemy mort!"
+    display.rfrsh(f"{enemy.name} vous attaque!")
+    enemy.attaquer(player)

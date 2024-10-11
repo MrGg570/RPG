@@ -38,5 +38,5 @@ class Input:
                     cursor = len(options)+1 - cursor
             elif input == 'bas':
                 cursor += 1
-        return options[cursor%len(options)]
+        return cursor%len(options)
             
