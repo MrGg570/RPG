@@ -1,17 +1,18 @@
 # Le code principal sera ici
 
-from os import system
 from rich.progress import Progress
 
 from Game.Console import console
 from Game.Builder import Build
+from Game.Display import Display
     
 
 player = Build.build('player', 100,10)
 
 enemy = Build.build('enemy', 100,5)
 
-clear = lambda: system('cls||clear')
+display = Display(console)
+
 
 # def display():
 #     console.print(player.pvbar()+'\n')
@@ -45,5 +46,10 @@ clear = lambda: system('cls||clear')
 #     enemy.attaquer(player)
 #     input()
 
-def rfrsh(menu):
-    pass
+
+
+options = ["Option 1", "Option 2", "Option 3"]
+display.initdisplay(player, enemy)
+choice = display.menu(options)
+print(choice)
+input()
