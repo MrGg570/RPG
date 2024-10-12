@@ -23,9 +23,13 @@ while True:
     match action:
         case 0:
             display.rfrsh(f"Vous attaquez {enemy.name}")
+            display.waitinput()
             player.attaquer(enemy)
         case 1:
             display.rfrsh(f"Vous ne faites rien...")
+            display.waitinput()
+
     assert enemy.pv > 0, "Enemy mort!"
     display.rfrsh(f"{enemy.name} vous attaque!")
+    display.waitinput()
     enemy.attaquer(player)

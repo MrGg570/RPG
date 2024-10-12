@@ -21,7 +21,9 @@ class Display:
         return self.input.menu(options)
     
     def waitinput(self) -> None:
-        pass
+        wait = True if self.input.get_keyboard_input() != 'enter' else False
+        while wait:
+                    wait = True if self.input.get_keyboard_input() != 'enter' else False
 
 
     

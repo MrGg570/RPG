@@ -40,3 +40,4 @@ class Input:
                 cursor += 1
         return cursor%len(options)
             
+print(Input(None, None).get_keyboard_input())

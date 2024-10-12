@@ -1,6 +1,3 @@
-from math import ceil
-
-
 class Character:
     """
     Classe de base pour définir des personnages
@@ -12,6 +9,8 @@ class Character:
         self.atk = atk
         self.arm = arm
 
+        self.lvl = 0
+
     def attaquer(self, other: object) -> bool:
         # probas
         # if probas:
@@ -21,6 +20,6 @@ class Character:
     def pvbar(self) -> str:
         style = "bold green" if self.name == 'Joueur' else "bold red"
         length = 20
-        fullbarlength = ceil(self.pv / self.maxpv * length)
-        bar = f"[{style}]{self.name}[/{style}] [yellow](lvl. 0)[/yellow] [green on green]{fullbarlength * ' '}[/green on green][red on red]{(length - fullbarlength) * ' '}[/red on red] {self.pv}/{self.maxpv}"
+        fullbarlength = round(self.pv / self.maxpv * length)
+        bar = f"[{style}]{self.name}[/{style}] [yellow](lvl. {self.lvl})[/yellow] [green on green]{fullbarlength * ' '}[/green on green][red on red]{(length - fullbarlength) * ' '}[/red on red] {self.pv}/{self.maxpv}"
         return bar
