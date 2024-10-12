@@ -1,6 +1,6 @@
 # Le code principal sera ici
 
-from Game import Builder, Combat, Display
+from Game import Builder, Combat, Display, Storyteller
 
     
 
@@ -8,12 +8,27 @@ player = Builder.Build.build('player')
 
 display = Display.Display()
 
+story = Storyteller.Story(display)
+
 combat = Combat.Combat(display)
 
-while player.isalive():
+mainmenu = True
+while mainmenu:
+    choice = display.mainMenu()
+    match choice:
+        case 0:
+            mainmenu = False
+        case 1:
+            pass
+        case 2:
+            exit(1)
 
-    enemy = Builder.Build.build('goblin', 3)
+story.introduction()
 
-    combat.initialize(player, enemy)
+# while player.isalive():
 
-    combat.start()
+#     enemy = Builder.Build.build('goblin', 3)
+
+#     combat.initialize(player, enemy)
+
+#     combat.start()

@@ -19,16 +19,21 @@ class Combat:
             action = self.display.combatrefresh(True, actions)
             match action:
                 case 0:
-                    self.display.combatrefresh(prompt=f"Vous attaquez {self.enemy.name}")
+                    if self.player.attaquer(self.enemy):
+                        self.display.combatrefresh(prompt=f"Vous attaquez {self.enemy.name}")
+                    else:
+                        self.display.combatrefresh(prompt=f"Vous avez raté votre attaque!")
                     self.display.waitinput()
-                    self.player.attaquer(self.enemy)
                 case 1:
                     self.display.combatrefresh(prompt=f"Vous ne faites rien...")
                     self.display.waitinput()
             if self.enemy.isalive():
-                self.display.combatrefresh(prompt=f"{self.enemy.name} vous attaque!")
+                if self.enemy.attaquer(self.player):
+                    self.display.combatrefresh(prompt=f"{self.enemy.name} vous attaque!")
+                else:
+                    self.display.combatrefresh(prompt=f"{self.enemy.name} à raté son attaque!")
                 self.display.waitinput()
-                self.enemy.attaquer(self.player)
+                
         return self.win() if self.player.isalive() else self.lose()
     
     def win(self) -> bool:

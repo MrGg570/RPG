@@ -2,7 +2,7 @@ from .Perso import Character
 
 class Player(Character):
     def __init__(self) -> None:
-        super().__init__('Joueur', 100, 10, 0, 1)
+        super().__init__('Joueur', pv=100, atk=10, arm=0, lvl=1, dodge=5)
         self.gold = 0
 
     def lvlup(self) -> int:

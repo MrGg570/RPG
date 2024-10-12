@@ -1,25 +1,31 @@
+from random import randint
+
 class Character:
     """
     Classe de base pour définir des personnages
     """
-    def __init__(self, name:str, pv:int, atk:int, arm: int=0, lvl: int = 0) -> None:
+    def __init__(self, name:str, pv:int, atk:int, arm: int=0, lvl: int = 0, dodge: int = 0) -> None:
         self.name = name
         self.maxpv = pv
         self.pv = pv
         self.atk = atk
         self.arm = arm
 
+        self.dodge = dodge
+
         self.lvl = lvl
         self.xp = 0
         self.maxxp = self.lvl * 100
 
     def attaquer(self, other: object) -> bool:
-        # probas
-        # if probas:
-        other.pv -= round(self.atk * 0.5 * self.lvl)
-        if other.pv < 0:
-            other.pv = 0
-        return  True # if probas else False
+        if randint(0, 100) > other.dodge:
+            other.pv -= round(self.atk * 0.5 * self.lvl)
+            sucess = True
+            if other.pv < 0:
+                other.pv = 0
+        else:
+            sucess = False
+        return  sucess
     
     def pvbar(self) -> str:
         style = "bold green" if self.name == 'Joueur' else "bold red"

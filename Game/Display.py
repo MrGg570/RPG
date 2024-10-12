@@ -8,8 +8,8 @@ class Display:
         self.clear = lambda: system('cls||clear')
         self.input = Input(self.console)
 
-    def log(self, string: str, style: str | None = None) -> None:
-        self.console.print(string, style=style)
+    def log(self, string: str, style: str | None = None, justify: str | None = None) -> None:
+        self.console.print(string, style=style, highlight=False, justify=justify)
 
     def waitinput(self) -> None:
         wait = True if self.input.get_keyboard_input() != 'enter' else False
@@ -26,6 +26,44 @@ class Display:
             fullbarlength = round(self.player.xp / self.player.maxxp * length)
             color = "gold3" if self.player.xp >= 75/100 * self.player.maxxp else "light_goldenrod3" if self.player.xp >= 50/100 * self.player.maxxp else "tan" if self.player.xp >= 25/100 * self.player.maxxp else "misty_rose3"
             self.console.print(f":sparkler:  [underline bold gold1]XP[/underline bold gold1] [{color} on {color}]{fullbarlength * ' '}[/{color} on {color}][grey19 on grey19]{(length - fullbarlength) * ' '}[/grey19 on grey19] [bold gold1]{self.player.xp}/{self.player.maxxp}[/bold gold1]")
+
+    def buildtitle(self, title: str) -> str:
+        horizontalbar = "\u2500"
+        maintitle = "\u250c"
+        for i in range(len(title)+4):
+            maintitle += horizontalbar
+        maintitle += "\u2510\n"
+        maintitle += "\u2502  "
+        maintitle += title
+        maintitle += "  \u2502\n"
+        maintitle += "\u2514"
+        for i in range(len(title)+4):
+            maintitle += horizontalbar
+        maintitle += "\u2518\n"
+        return maintitle
+
+    def mainMenu(self): 
+        actions = ["Démarer", "Options", "Quitter"]
+        cursor = 0
+        key = None
+        while key != 'enter':
+            self.clear()
+            self.log(self.buildtitle("RPG"), justify='center', style='bold white')
+            cursor = cursor%len(actions)
+            for i, e in enumerate(actions):
+                if cursor == i:
+                    self.console.print('> ' + e, justify='center')
+                else:
+                    self.console.print('  ' + e, justify='center')
+
+            key = self.input.get_keyboard_input()
+            if key == 'haut':
+                cursor -= 1
+                if cursor<0:
+                    cursor = len(actions) - 1
+            elif key == 'bas':
+                cursor += 1
+        return cursor%len(actions)
 
     def combatinitdisplay(self, combat):
         self.player = combat.player
