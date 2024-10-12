@@ -2,8 +2,6 @@
 
 from Game import Builder, Combat, Display, Storyteller
 
-    
-
 player = Builder.Build.build('player')
 
 display = Display.Display()
@@ -11,6 +9,14 @@ display = Display.Display()
 story = Storyteller.Story(display)
 
 combat = Combat.Combat(display)
+
+def combattre(name: str, lvl: str, tutorial: bool = False) -> None:
+
+    enemy = Builder.Build.build(name, lvl)
+
+    combat.initialize(player, enemy)
+
+    combat.start(tutorial)
 
 mainmenu = True
 while mainmenu:
@@ -25,10 +31,4 @@ while mainmenu:
 
 story.introduction()
 
-# while player.isalive():
-
-#     enemy = Builder.Build.build('goblin', 3)
-
-#     combat.initialize(player, enemy)
-
-#     combat.start()
+combattre(story.getmob(), 2, tutorial=True)

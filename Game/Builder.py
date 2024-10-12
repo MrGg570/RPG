@@ -1,5 +1,4 @@
-from Persos import PersoPrincipal
-from Persos import Goblin
+from Persos import PersoPrincipal, Goblin, Spider
 
 class Build:
     def __init__(self) -> None:
@@ -12,3 +11,5 @@ class Build:
             return Goblin.Goblin(lvl)
         if name == 'player':
             return PersoPrincipal.Player()
+        if name == 'spider':
+            return Spider.Spider(lvl)

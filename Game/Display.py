@@ -43,12 +43,12 @@ class Display:
         return maintitle
 
     def mainMenu(self): 
-        actions = ["Démarer", "Options", "Quitter"]
+        actions = ["Démarer  ", "Options  ", "Quitter  "]
         cursor = 0
         key = None
         while key != 'enter':
             self.clear()
-            self.log(self.buildtitle("RPG"), justify='center', style='bold white')
+            self.log(self.buildtitle("RPG: A ROLE PLAYING GAME"), justify='center', style='bold white')
             cursor = cursor%len(actions)
             for i, e in enumerate(actions):
                 if cursor == i:

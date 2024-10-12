@@ -7,13 +7,10 @@ class Combat:
         self.enemy = enemy
         self.display.combatinitdisplay(self)
 
-    def start(self) -> bool:
+    def start(self, tutorial: bool = False) -> bool:
 
         actions = ["Attaquer", "Ne rien faire"]
 
-        self.display.clear()
-        self.display.log("Début du combat", "bold white")
-        self.display.waitinput()
         while self.player.isalive() and self.enemy.isalive():
             actions = ["Attaquer", "Ne rien faire"]
             action = self.display.combatrefresh(True, actions)

@@ -28,11 +28,13 @@ class Character:
         return  sucess
     
     def pvbar(self) -> str:
+        namelength = 15
+        spaces = (namelength - len(self.name)) * " "
         style = "bold green" if self.name == 'Joueur' else "bold red"
         pvcolor = "bright_green" if self.pv > 80/100*self.maxpv else "orange3" if self.pv > 20/100*self.maxpv else "bright_red"
         length = 20
         fullbarlength = round(self.pv / self.maxpv * length)
-        bar = f"[{style}]{self.name}[/{style}] [gold1](lvl. {self.lvl})[/gold1] [green on green]{fullbarlength * ' '}[/green on green][grey19 on grey19]{(length - fullbarlength) * ' '}[/grey19 on grey19] [bold {pvcolor}]{self.pv}[/bold {pvcolor}]/[bold white]{self.maxpv}[/bold white]"
+        bar = f"[{style}]{self.name}[/{style}]{spaces} [gold1](lvl. {self.lvl})[/gold1] [green on green]{fullbarlength * ' '}[/green on green][grey19 on grey19]{(length - fullbarlength) * ' '}[/grey19 on grey19] [bold {pvcolor}]{self.pv}[/bold {pvcolor}]/[bold white]{self.maxpv}[/bold white]"
         return bar
     
     def isalive(self):
