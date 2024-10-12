@@ -24,7 +24,7 @@
 - [x] `os` pour clear la console
 - [x] `rich` pour l'interface graphique en console (print)
 
-# INSTALLER
+# EXECUTER
 
 Télécharger les fichier en zip, décompresser et se mettre dans le dossier où se trouve `main.py`.
 
