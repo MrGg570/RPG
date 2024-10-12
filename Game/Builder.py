@@ -1,4 +1,5 @@
-from Persos import Enemies, PersoPrincipal
+from Persos import PersoPrincipal
+from Persos import Goblin
 
 class Build:
     def __init__(self) -> None:
@@ -7,7 +8,7 @@ class Build:
     @classmethod
     def build(self, name: str, pv: int, atk: int, arm: int = 0):
         name = name.lower()
-        if name == 'enemy':
-            return Enemies.Enemy(pv, atk, arm)
+        if name == 'goblin':
+            return Goblin.Goblin(pv, atk, arm)
         if name == 'player':
             return PersoPrincipal.Player(pv, atk, arm)

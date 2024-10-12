@@ -1,5 +1,5 @@
 from .Perso import Character
 
-class Enemy(Character):
+class Goblin(Character):
     def __init__(self, pv: int, atk: int, arm: int = 0) -> None:
         super().__init__('Goblin', pv, atk, arm)
