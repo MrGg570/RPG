@@ -28,12 +28,18 @@ Télécharger les fichier en zip, décompresser et se mettre dans le dossier où
 
 Executez:
 
-```pip install -r requirements.txt```
+```sh
+pip install -r requirements.txt
+```
 
 Puis cette commande pour lancer le jeu:
 
-```python main.py```
+```sh
+python main.py
+```
 
 ***Remarque**: si cette dernière ne fonctionne pas, utiliser la suivante:*
 
-```python3 main.py```
+```sh
+python3 main.py
+```
