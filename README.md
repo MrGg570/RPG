@@ -21,3 +21,19 @@
 - [x] `keyboard` pour track les touches pressées
 - [ ] `os` pour clear la console (et print)?
 - [ ] `rich` ou `textual` pour l'interface graphique ?
+
+# INSTALLER
+
+Télécharger les fichier en zip, décompresser et se mettre dans le dossier où se trouve `main.py`.
+
+Executez:
+
+```pip install -r requirements.txt```
+
+Puis cette commande pour lancer le jeu:
+
+```python main.py```
+
+***Remarque**: si cette dernière ne fonctionne pas, utiliser la suivante:*
+
+```python3 main.py```
