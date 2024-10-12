@@ -18,13 +18,14 @@ class Display:
 
     def logbars(self, prompt: str = "", xp: bool = False):
         self.clear()
-        self.console.print(self.player.pvbar()+"\n")
-        self.console.print(self.enemy.pvbar()+"\n")
+        self.console.print(self.player.pvbar()+"\n", highlight=False)
+        self.console.print(self.enemy.pvbar()+"\n", highlight=False)
         self.console.print(prompt)
         if xp:
             length = 20
             fullbarlength = round(self.player.xp / self.player.maxxp * length)
-            self.console.print(f":sparkler:  [underline bold yellow]XP[/underline bold yellow] [blue on blue]{fullbarlength * ' '}[/blue on blue][black on black]{(length - fullbarlength) * ' '}[/black on black] [bold yellow]{self.player.xp}/{self.player.maxxp}[/bold yellow]")
+            color = "gold3" if self.player.xp >= 75/100 * self.player.maxxp else "light_goldenrod3" if self.player.xp >= 50/100 * self.player.maxxp else "tan" if self.player.xp >= 25/100 * self.player.maxxp else "misty_rose3"
+            self.console.print(f":sparkler:  [underline bold gold1]XP[/underline bold gold1] [{color} on {color}]{fullbarlength * ' '}[/{color} on {color}][grey19 on grey19]{(length - fullbarlength) * ' '}[/grey19 on grey19] [bold gold1]{self.player.xp}/{self.player.maxxp}[/bold gold1]")
 
     def combatinitdisplay(self, combat):
         self.player = combat.player

@@ -4,20 +4,16 @@ from Game import Builder, Combat, Display
 
     
 
-player = Builder.Build.build('player', 30,10)
-
-enemy = Builder.Build.build('goblin', 20,5)
+player = Builder.Build.build('player')
 
 display = Display.Display()
 
 combat = Combat.Combat(display)
 
-combat.initialize(player, enemy)
+while player.isalive():
 
-combat.start()
+    enemy = Builder.Build.build('goblin', 3)
 
-enemy = Builder.Build.build('goblin', 20,5)
+    combat.initialize(player, enemy)
 
-combat.initialize(player, enemy)
-
-combat.start()
+    combat.start()

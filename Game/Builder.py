@@ -6,9 +6,9 @@ class Build:
         pass
 
     @classmethod
-    def build(self, name: str, pv: int, atk: int, arm: int = 0):
+    def build(self, name: str, lvl: int = 1):
         name = name.lower()
         if name == 'goblin':
-            return Goblin.Goblin(pv, atk, arm)
+            return Goblin.Goblin(lvl)
         if name == 'player':
-            return PersoPrincipal.Player(pv, atk, arm)
+            return PersoPrincipal.Player()

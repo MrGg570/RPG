@@ -34,17 +34,22 @@ class Combat:
     def win(self) -> bool:
         self.display.logbars(f":crossed_swords-emoji:  Vous avez vaincu {self.enemy.name} Lvl. {self.enemy.lvl} :tada::tada::tada:")
         self.display.waitinput()
+
+
         goldamount = round(100 + 1.1 * self.enemy.lvl)
-        xpamount = round(50 + 1.1 * self.enemy.lvl)
+        xpamount = round(10 + 1.1 * self.enemy.lvl)
+
+
         self.player.gold += goldamount
         self.player.xp += xpamount
-        self.display.logbars(f":sparkles: Vous gagnez {xpamount} XP :sparkler:  et {goldamount} GOLD :money_bag:")
+        self.display.logbars(f":sparkles: Vous gagnez [bold gold1]{xpamount} XP[/bold gold1] :sparkler:  et [bold gold1]{goldamount} GOLD[/bold gold1] :money_bag:")
         self.display.waitinput()
         if self.player.xp >= self.player.maxxp:
             self.player.lvl += 1
             self.player.xp -+ self.player.maxxp
-            self.player.maxxp += self.player.lvl * 100
             self.display.logbars(f":up_arrow-emoji:  Vous passez niveau {self.player.lvl}! :tada::tada::tada:")
+            self.display.waitinput()
+            self.display.logbars(f":sparkles: Vous gagnez [bold gold1]{self.player.lvlup()} GOLD[/bold gold1] :money_bag: !")
             self.display.waitinput()
         else:
             self.display.logbars(xp=True)
