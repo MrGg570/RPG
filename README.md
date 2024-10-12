@@ -6,21 +6,23 @@
 
 ## To do list:
 
-- [ ] Définir un personnage
-- [ ] Définir des monstres
-- [ ] Système de combat
+- [x] Définir un personnage
+- [x] Définir des monstres
+- [x] Système de combat
+- [ ] Système de régions
+- [ ] Système d'objets
 - [ ] Histoire
 
 ### BONUS To Do List
 
-- [ ] Affichage graphique avancé
-- [ ] Inputs avancés
+- [x] Affichage graphique avancé
+- [x] Inputs avancés
 
 ### Modules
 
-- [x] `keyboard` pour track les touches pressées
-- [ ] `os` pour clear la console (et print)?
-- [ ] `rich` ou `textual` pour l'interface graphique ?
+- [x] `keyboard` pour récupérer les touches pressées
+- [x] `os` pour clear la console
+- [x] `rich` pour l'interface graphique en console (print)
 
 # INSTALLER
 
