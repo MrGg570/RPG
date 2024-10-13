@@ -7,8 +7,31 @@ class Combat:
         self.enemy = enemy
         self.display.combatinitdisplay(self)
 
-    def start(self, tutorial: bool = False) -> bool:
+    def tuto(self):
+        roundtrack = 0
 
+        self.display.logbars("Bienvenue dans votre premier combat! \u25BA")
+        self.display.waitinput()
+        self.display.combatrefresh(menu = True, actions = ["Attaquer"], prompt="Vous pouvez attaquer l'ennemi en appuyant sur [underline bold blue]ENTRER[/underline bold blue] \u25BA")
+        if self.player.attaquer(self.enemy):
+            self.display.combatrefresh(prompt=f"[green]Vous[/green] [bold]attaquez[/bold] [bright_red]{self.enemy.name}[/bright_red] \u25BA")
+        else:
+            self.display.combatrefresh(prompt=f"[green]Vous[/green] avez [bold]raté votre attaque![/bold] \u25BA")
+        self.display.waitinput()
+        self.display.logbars("Maintenant, c'est au tour de l'[bold bright_red]ennemi[/bold bright_red] d'attaquer \u25BA")
+        self.display.waitinput()
+        if self.enemy.attaquer(self.player):
+            self.display.combatrefresh(prompt=f"[bright_red]{self.enemy.name}[/bright_red] [green]vous[/green] [bold]attaque![/bold] \u25BA")
+        else:
+            self.display.combatrefresh(prompt=f"[bright_red]{self.enemy.name}[/bright_red] à [bold]raté son attaque![/bold] \u25BA")
+        self.display.waitinput()
+        self.display.logbars("D'autres options sont aussi disponible en combat. Vous pouvez utiliser [underline bold blue]FLECHE HAUT[/underline bold blue] et [underline bold blue]FLECHE BAS[/underline bold blue] pour naviguer \u25BA")
+        self.display.waitinput()
+        self.start()
+        self.display.logbars("[bold gold1]Bravo![/bold gold1] [green]Vous[/green] avez terminé votre [bold]premier combat![/bold] \u25BA")
+        self.display.waitinput()
+
+    def start(self) -> bool:
         actions = ["Attaquer", "Ne rien faire"]
 
         while self.player.isalive() and self.enemy.isalive():
@@ -17,41 +40,41 @@ class Combat:
             match action:
                 case 0:
                     if self.player.attaquer(self.enemy):
-                        self.display.combatrefresh(prompt=f"Vous attaquez {self.enemy.name}")
+                        self.display.combatrefresh(prompt=f"[green]Vous[/green] [bold]attaquez[/bold] [bright_red]{self.enemy.name}[/bright_red] \u25BA")
                     else:
-                        self.display.combatrefresh(prompt=f"Vous avez raté votre attaque!")
+                        self.display.combatrefresh(prompt=f"[green]Vous[/green] avez [bold]raté votre attaque![/bold] \u25BA")
                     self.display.waitinput()
                 case 1:
-                    self.display.combatrefresh(prompt=f"Vous ne faites rien...")
+                    self.display.combatrefresh(prompt=f"[green]Vous[/green] ne [bold]faites rien[/bold][white]...[/white] \u25BA")
                     self.display.waitinput()
             if self.enemy.isalive():
                 if self.enemy.attaquer(self.player):
-                    self.display.combatrefresh(prompt=f"{self.enemy.name} vous attaque!")
+                    self.display.combatrefresh(prompt=f"[bright_red]{self.enemy.name}[/bright_red] [green]vous[/green] [bold]attaque![/bold] \u25BA")
                 else:
-                    self.display.combatrefresh(prompt=f"{self.enemy.name} à raté son attaque!")
+                    self.display.combatrefresh(prompt=f"[bright_red]{self.enemy.name}[/bright_red] à [bold]raté son attaque![/bold] \u25BA")
                 self.display.waitinput()
                 
         return self.win() if self.player.isalive() else self.lose()
     
     def win(self) -> bool:
-        self.display.logbars(f":crossed_swords-emoji:  Vous avez vaincu {self.enemy.name} Lvl. {self.enemy.lvl} :tada::tada::tada:")
+        self.display.logbars(f":crossed_swords-emoji:  [green]Vous[/green] avez [bold]vaincu[/bold] [bright_red]{self.enemy.name}[/bright_red] [gold1]Lvl. {self.enemy.lvl}[/gold1] :tada::tada::tada: \u25BA")
         self.display.waitinput()
 
 
         goldamount = round(100 + 1.1 * self.enemy.lvl)
-        xpamount = round(10 + 1.1 * self.enemy.lvl)
+        xpamount = round(20 + 10* self.enemy.lvl)
 
 
         self.player.gold += goldamount
         self.player.xp += xpamount
-        self.display.logbars(f":sparkles: Vous gagnez [bold gold1]{xpamount} XP[/bold gold1] :sparkler:  et [bold gold1]{goldamount} GOLD[/bold gold1] :money_bag:")
+        self.display.logbars(f":sparkles: [green]Vous[/green] [bold]gagnez[/bold] [bold gold1]{xpamount} XP[/bold gold1] :sparkler:  et [bold gold1]{goldamount} GOLD[/bold gold1] :money_bag: \u25BA")
         self.display.waitinput()
         if self.player.xp >= self.player.maxxp:
             self.player.lvl += 1
             self.player.xp -+ self.player.maxxp
-            self.display.logbars(f":up_arrow-emoji:  Vous passez niveau {self.player.lvl}! :tada::tada::tada:")
+            self.display.logbars(f":up_arrow-emoji:  [green]Vous[/green] passez [bold]niveau [gold1]{self.player.lvl}![/gold1][/bold] :tada::tada::tada: \u25BA")
             self.display.waitinput()
-            self.display.logbars(f":sparkles: Vous gagnez [bold gold1]{self.player.lvlup()} GOLD[/bold gold1] :money_bag: !")
+            self.display.logbars(f":sparkles: [green]Vous[/green] gagnez [bold gold1]{self.player.lvlup()} GOLD[/bold gold1] :money_bag: ! \u25BA")
             self.display.waitinput()
         else:
             self.display.logbars(xp=True)
@@ -59,6 +82,6 @@ class Combat:
         return True
 
     def lose(self) -> bool:
-        self.display.logbars(f":skull: Vous avez été terrassé par {self.enemy.name} Lvl. {self.enemy.lvl} :cry::cry::cry:")
+        self.display.logbars(f":skull: [green]Vous[/green] avez été [bold]terrassé[/bold] par [bright_red]{self.enemy.name}[/bright_red] [gold1]Lvl. {self.enemy.lvl}[/gold1] :cry::cry::cry: \u25BA")
         self.display.waitinput()
         return False

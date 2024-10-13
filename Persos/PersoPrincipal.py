@@ -6,6 +6,7 @@ class Player(Character):
         self.gold = 0
 
     def lvlup(self) -> int:
+        self.maxpv += 5+2*self.lvl
         self.xp = 0
         self.maxxp = self.lvl * 100
         goldamount = 10 + round(1.5 * self.lvl)

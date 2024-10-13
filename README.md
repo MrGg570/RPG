@@ -10,6 +10,8 @@
 - [x] Définir des monstres
 - [x] Système de combat
 - [ ] Système de régions
+- [ ] Déplacement intra-régions
+- [ ] Déplacements globaux
 - [ ] Système d'objets
 - [ ] Histoire
 

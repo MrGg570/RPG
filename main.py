@@ -1,22 +1,29 @@
 # Le code principal sera ici
 
 from Game import Builder, Combat, Display, Storyteller
+from time import sleep
 
 player = Builder.Build.build('player')
 
 display = Display.Display()
 
-story = Storyteller.Story(display)
-
 combat = Combat.Combat(display)
 
-def combattre(name: str, lvl: str, tutorial: bool = False) -> None:
+def combattre(name: str, lvl: str, tutorial: bool = False) -> None | bool:
 
-    enemy = Builder.Build.build(name, lvl)
+    if tutorial:
+        enemy = Builder.Build.build(name, lvl)
 
-    combat.initialize(player, enemy)
+        combat.initialize(player, enemy)
 
-    combat.start(tutorial)
+        combat.tuto()
+
+    else:
+        enemy = Builder.Build.build(name, lvl)
+
+        combat.initialize(player, enemy)
+
+        return combat.start()
 
 mainmenu = True
 while mainmenu:
@@ -29,6 +36,39 @@ while mainmenu:
         case 2:
             exit(1)
 
-story.introduction()
+story = Storyteller.Story(display)
 
-combattre(story.getmob(), 2, tutorial=True)
+# story.introduction()
+
+# combattre(story.getmob(), 3, True)
+
+menu = False
+while not menu:
+    action = story.outofcombat(['combat', 'sac', 'shop', 'eglise'])
+    match action:
+
+        case 'combat':
+            enemies = story.numberofenemies()
+            story.tell(f"Vous vous retrouvez face à {enemies} enemies! \u25BA")
+            display.waitinput()
+            playeralive = True
+            i = 1
+            while playeralive and i<= enemies:
+                mob = story.getmob()
+                story.tell(f"Enemi n°{i}: {story.mobdico[mob]} \u25BA")
+                display.waitinput()
+                playeralive = combattre(mob, story.getlevel(player))
+                i += 1
+            if not playeralive:
+                pass
+            else:
+                pass
+
+        case 'sac':
+            pass
+
+        case 'shop':
+            pass
+
+        case 'eglise':
+            story.eglise(player)

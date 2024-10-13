@@ -64,6 +64,29 @@ class Display:
             elif key == 'bas':
                 cursor += 1
         return cursor%len(actions)
+    
+    def menu(self, availableactions: list, menuname: str) -> str: 
+        actions = availableactions
+        cursor = 0
+        key = None
+        while key != 'enter':
+            self.clear()
+            self.log(self.buildtitle(menuname), justify='center', style='bold white')
+            cursor = cursor%len(actions)
+            for i, e in enumerate(actions):
+                if cursor == i:
+                    self.console.print('> ' + e + (10-len(e))*"\u2508", justify='center')
+                else:
+                    self.console.print('  ' + e + (10-len(e))*"\u2508", justify='center')
+
+            key = self.input.get_keyboard_input()
+            if key == 'haut':
+                cursor -= 1
+                if cursor<0:
+                    cursor = len(actions) - 1
+            elif key == 'bas':
+                cursor += 1
+        return actions[cursor%len(actions)]
 
     def combatinitdisplay(self, combat):
         self.player = combat.player
@@ -75,7 +98,10 @@ class Display:
             cursor = 0
             key = None
             while key != 'enter':
-                self.logbars("Choisissez une action:")
+                if prompt != "":
+                    self.logbars(f"{prompt}\nChoisissez une action:")
+                else:
+                    self.logbars("Choisissez une action:")
                 cursor = cursor%len(actions)
                 for i, e in enumerate(actions):
                     if cursor == i:
