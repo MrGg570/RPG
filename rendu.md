@@ -60,7 +60,7 @@ Le dossier **__Game__** regroupe les fichier utilisés par le fichier final `mai
 
 Le dossier **__Persos__** contient la classe mère `Perso.py` utilisée pour instancier des personnages pour le jeu.
 
-### Régions
+## Régions
 
 Le dossier **__Regions__** contient la classe mère `Region` utilisée pour instancier des région pour le jeu.
 
