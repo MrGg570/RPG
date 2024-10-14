@@ -10,9 +10,13 @@
 
 * [Structures de données](#structures-de-données)
 
-    - [Classe X](#classe-x)
+    - [Dossier Game](#game)
 
-    - [Classe Y](#classe-y)
+    - [Dossier Persos](#persos)
+ 
+    - [Dossier Régions](#régions)
+ 
+    - [Dossier Inputs](#inputs)
 
 # Détails du projet
 
