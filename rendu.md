@@ -26,7 +26,27 @@ Le projet est d'effectuer un RPG (Role Playing Game) en python en utilisant le p
 
 ## Règles
 
-Le jeu respecte quelques règles de fonctionnement simple. Le joueur incarne un personnage qui possède des statistiques : nombre de points de vie, défense, ... Le joueur peut naviger
+__**Sommaire**__
+
+- [Navigation dans les menus](#menu)
+
+- [Le Joueur](#joueur)
+
+- [Les Ennemis](#ennemis)
+
+- [Système de déplacement](#déplacement)
+
+- [Système de combat](#combat)
+
+### Menu
+
+### Joueur
+
+### Ennemis 
+
+### Déplacement 
+
+### Combat 
 
 # Structures de données
 
