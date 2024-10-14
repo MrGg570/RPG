@@ -26,10 +26,20 @@ Le jeu respecte quelques règles de fonctionnement simple. Le joueur incarne un 
 
 ## Structures de données
 
-### Classe X
+Étant donné la contrainte de la programmation orientée objet, nous avons decider de faire un fichier par classe, avec chaque fichier rangé dans un dossier.
 
-Méthodes, attributs, fonctionnement
+### Game
 
-### Classe Y
+Le dossier **__Game__** regroupe les fichier utilisés par le fichier final `main.py`. 
 
-Méthodes, attributs, fonctionnement
+### Persos
+
+Le dossier **__Persos__** contient la classe mère `Perso.py` utilisée pour instancier des personnages pour le jeu.
+
+### Régions
+
+Le dossier **__Regions__** contient la classe mère `Region` utilisée pour instancier des région pour le jeu.
+
+# Inputs
+
+Enfin le dossier **__Inputs__** contient un seul fichier contenant une classe permettant de gérer les appuis sur le clavier.
