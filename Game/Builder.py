@@ -9,10 +9,10 @@ class Build:
 
     @classmethod
     def build(self, name: str, lvl: int = 1):
-    """
-    Le décorateur permet d'appeler la fonction sans instancier d'objet.
-    La fonction retourne le personnage demandé avec le niveau précisé 
-    """
+        """
+        Le décorateur permet d'appeler la fonction sans instancier d'objet.
+        La fonction retourne le personnage demandé avec le niveau précisé 
+        """
         name = name.lower()
         if name == 'goblin':
             return Goblin.Goblin(lvl)
