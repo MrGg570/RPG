@@ -3,20 +3,35 @@ from Inputs.inputHandler import Input, sleep
 from os import system
 
 class Display:
+    """
+    Classe permettant de gérer l'affichage à l'écran
+    """
     def __init__(self) -> None:
+        """
+        Instancie un objet Display avec comme attributs la console, une fonction permettant de clear la console et un objet Input
+        """
         self.console = console
         self.clear = lambda: system('cls||clear')
         self.input = Input(self.console)
 
     def log(self, string: str, style: str | None = None, justify: str | None = None) -> None:
+        """
+        Permet d'afficher du texte à l'écran
+        """
         self.console.print(string, style=style, highlight=False, justify=justify)
 
     def waitinput(self) -> None:
+        """
+        Permet d'attendre jusqu'à-ce qu'une touche du clavier soit appuyée
+        """
         wait = True if self.input.get_keyboard_input() != 'enter' else False
         while wait:
                     wait = True if self.input.get_keyboard_input() != 'enter' else False
 
     def logbars(self, prompt: str = "", xp: bool = False):
+        """
+        Permet d'afficher els barres de vie des personnages lors d'un combat
+        """
         self.clear()
         self.console.print(self.player.pvbar()+"\n", highlight=False)
         self.console.print(self.enemy.pvbar()+"\n", highlight=False)
