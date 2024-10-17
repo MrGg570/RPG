@@ -15,6 +15,8 @@
 - [ ] Système d'objets
 - [ ] Histoire
 
+- [ ] RETIRER FONCTION COMBATRE DU MAIN ET LA METTRE DANS COMBAT
+
 ### BONUS To Do List
 
 - [x] Affichage graphique avancé
