@@ -1,13 +1,22 @@
 class Combat:
+    """
+    Classe utilisée pour gérer les combats
+    """
     def __init__(self, display) -> None:
+        """
+        Instancie un objet Combat avec l'objet display permettant d'affficher à l'écran
+        """
         self.display = display
 
-    def initialize(self, player, enemy):
+    def initialize(self, player, enemy): # A CHANGER
         self.player = player
         self.enemy = enemy
         self.display.combatinitdisplay(self)
 
     def tuto(self):
+        """
+        Déroulement du premier combat tutoriel
+        """
         roundtrack = 0
 
         self.display.logbars("Bienvenue dans votre premier combat! \u25BA")
@@ -32,6 +41,9 @@ class Combat:
         self.display.waitinput()
 
     def start(self) -> bool:
+        """
+        Lance un combat
+        """
         actions = ["Attaquer", "Ne rien faire"]
 
         while self.player.isalive() and self.enemy.isalive():
@@ -57,6 +69,9 @@ class Combat:
         return self.win() if self.player.isalive() else self.lose()
     
     def win(self) -> bool:
+        """"
+        Appelé lorqu'un combat est gagné
+        """
         self.display.logbars(f":crossed_swords-emoji:  [green]Vous[/green] avez [bold]vaincu[/bold] [bright_red]{self.enemy.name}[/bright_red] [gold1]Lvl. {self.enemy.lvl}[/gold1] :tada::tada::tada: \u25BA")
         self.display.waitinput()
 
@@ -82,6 +97,9 @@ class Combat:
         return True
 
     def lose(self) -> bool:
+        """
+        Appelé quand un combat est perdu
+        """
         self.display.logbars(f":skull: [green]Vous[/green] avez été [bold]terrassé[/bold] par [bright_red]{self.enemy.name}[/bright_red] [gold1]Lvl. {self.enemy.lvl}[/gold1] :cry::cry::cry: \u25BA")
         self.display.waitinput()
         return False
