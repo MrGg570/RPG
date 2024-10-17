@@ -1,0 +1,24 @@
+from random import randint
+
+class Shop:
+    def __init__(self):
+        self.simpatie=randint(0,100)
+        self.Valeurprix=0
+    def Direbonjour(self):
+        if self.simpatie>50:
+            if self.simpatie>75:
+                self.Valeurprix+=25
+                return"Wow ce vendeur est super joyeux,profitez-en!!"
+            else:
+                self.Valeurprix+=15
+                return"Le vendeur est de bonne humeur aujourd'hui,il est temp de faire des affaire..."
+        elif self.simpatie<50:
+            if self.simpatie<25:
+                self.Valeurprix+=-25
+                return"Le vendeur est fou de colère mieux vaut ne point negocier aujourd'hui...."
+            else:
+             self. Valeurprix+=-15
+             return"Le vendeur est ronchon les affaires vont être dur....."
+        else:
+            self.Valeurprix=10
+            return"Le vendeur est normal "
