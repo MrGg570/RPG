@@ -5,6 +5,9 @@ class Character:
     Classe de base pour définir des personnages
     """
     def __init__(self, name:str, pv:int, atk:int, arm: int=0, lvl: int = 0, dodge: int = 0) -> None:
+        """
+        Instancie les personnages avec les statistiques de _
+        """
         self.name = name
         self.maxpv = pv
         self.pv = pv
@@ -18,6 +21,10 @@ class Character:
         self.maxxp = self.lvl * 100
 
     def attaquer(self, other: object) -> bool:
+        """
+        Permet d'attaquer un autre personnages en prenant en compte les statistiques
+        Retourne un booléen: True si l'attaque est réussie, False si non
+        """
         if randint(0, 100) > other.dodge:
             other.pv -= round(self.atk * 0.5 * self.lvl) - round(((other.arm/100) * round(self.atk * 0.5 * self.lvl)))
             sucess = True
@@ -38,4 +45,8 @@ class Character:
         return bar
     
     def isalive(self):
+        """
+        Permet de savoir si le personnage est encore en vie
+        Retourne un booléen: True si le personnage est vie, sinon False
+        """
         return self.pv > 0
