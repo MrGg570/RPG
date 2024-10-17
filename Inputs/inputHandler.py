@@ -2,6 +2,9 @@ from keyboard import is_pressed
 from time import sleep
 
 class Input:
+    """
+    Classe qui gère les appuis de touche du clavier
+    """
     def __init__(self, console) -> None:
         self.console = console
 
