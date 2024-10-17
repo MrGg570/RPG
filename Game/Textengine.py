@@ -1,10 +1,19 @@
 from time import sleep
 
 class Text:
+    """
+    Classe utilisée comme moteur de texte pour la narration
+    """
     def __init__(self, display) -> None:
+        """
+        Instancie un moteur de texte avec l'objet display
+        """
         self.display = display
 
     def render(self, string: str, previouslines: list = []) -> None:
+        """
+        Permet d'afficher une chaine de caractère caractère par caractère
+        """
         fragment = ""
         slowdown = [",",".", "?", "!"]
         closing = False
