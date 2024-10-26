@@ -1,3 +1,5 @@
+from RPG.utilities.matys import Objets, Shop
+
 class Zone:
     """
     Classe mère pour instancier des zones
@@ -9,3 +11,5 @@ class Zone:
 
         self.lvl = lvl
         self.monsters = monsters
+
+        self.shop = Shop()

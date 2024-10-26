@@ -1,5 +1,5 @@
 from ..character import Character
-from RPG.utilities import inventory
+from RPG.utilities.matys import Stuf
 
 class Knight(Character):
     def __init__(self, name: str) -> None:
@@ -11,4 +11,10 @@ class Knight(Character):
         self.xp = 0
         self.maxxp = 1000
 
-        self.bag = inventory.Bag('knight')
+        self.bag = Stuf()
+    
+    def lvlup(self):
+        self.atk += 5
+        self.basepv += 5
+        self.maxpv = self.calc_stat(self.basepv, 'pv')
+        self.pv = self.maxpv

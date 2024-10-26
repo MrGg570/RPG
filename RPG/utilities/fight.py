@@ -97,6 +97,7 @@ class Combat:
         while self.player.maxxp <= self.player.xp:
             self.display.menu(actions = ['OK'], text = lastbar, info = f'Vous passez niveau {self.player.lvl + 1}!')
             self.player.lvl += 1
+            self.player.lvlup()
             self.player.xp -= self.player.maxxp
             self.display.menu(actions = ['OK'], text = lastbar, info = self.display.get_xpbar(self.player) + '\n')
         

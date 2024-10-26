@@ -150,7 +150,13 @@ class RPG:
                 pass
 
             case 'Boutique':
-                pass
+                text = self.currentzone.shop.Direbonjour()
+                self.tell(text)
+                self.screen.menu(actions=['OK'], text=text)
+                liste = self.currentzone.shop.afficher_inventaire()
+                liste.append('Back')
+                selected = self.screen.menu(actions=liste)
+                
 
             case 'Eglise':
                 self.eglise()

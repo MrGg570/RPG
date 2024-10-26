@@ -38,9 +38,9 @@ class Display:
             cursor = cursor%len(actions)
             for i, e in enumerate(actions):
                 if cursor == i:
-                    self.console.print('\u2192 ' + e, justify='left')
+                    self.console.print('\u2192 ' + str(e), justify='left')
                 else:
-                    self.console.print('  ' + e, justify='left')
+                    self.console.print('  ' + str(e), justify='left')
 
             key = self.get_key()
             if key == 'haut':
