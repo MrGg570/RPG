@@ -1,6 +1,6 @@
 from time import sleep
 
-from RPG.utilities import characterbuilder, display, fight, zonebuilder
+from RPG.utilities import characterbuilder, display, fight, zonebuilder, quentin
 from random import randint, choice
 
 class RPG:
@@ -9,6 +9,7 @@ class RPG:
     """
     def __init__(self, skipintro: bool = False) -> None:
         self.screen = display.Display()
+        self.event = quentin.Event()
 
         self.region = list()
         zonetype = ('forest', 'desert', 'swamp', 'nether')
@@ -25,7 +26,7 @@ class RPG:
         self.region.append(zonebuilder.Build.create_zone(name='', type='boss', lvl=(50,50)))
         self.currentzone = self.region[0]
 
-        self.quests = {1:['Vaincre 10 ennemies', 0, 10, 'kill'], 2: ['Infliger 1 000 points de dégat', 0, 1000, 'dmg'], 3:['Vaincre 50 ennemies', 0, 50, 'kill'], 4: ['Infliger 10 000 points de dégat', 0, 10000, 'dmg']}
+        self.quests = {1:['Vaincre 10 ennemies', 10, 10, 'kill'], 2: ['Infliger 1 000 points de dégat', 1000, 1000, 'dmg'], 3:['Vaincre 50 ennemies', 50, 50, 'kill'], 4: ['Infliger 10 000 points de dégat', 10000, 10000, 'dmg'],5:['Vaincre 150 ennemies', 150, 150, 'kill']}
 
         start = False
         while not start:
@@ -90,8 +91,6 @@ class RPG:
             if i != "[" and not closing:
                 fragment += i
                 self.screen.clear()
-                # for j in previouslines:
-                #     self.screen.print(j, "bold white", justify="center")
                 self.screen.print(fragment, style=style)
                 sleep(0.05 if i not in slowdown else 0.3)
             else:
@@ -138,19 +137,24 @@ class RPG:
         """
         Gère le menu prinbcipal du jeu
         """
-        selected = self.screen.menu(actions=['Combattre', 'Sac', 'Boutique', 'Eglise', 'Carte', 'Quêtes'], text=self.screen.get_title('MENU'))
+        selected = self.screen.menu(actions=['Combattre', 'Sac', 'Boutique', 'Eglise', 'Carte', 'Quêtes', 'Quitter'], text=self.screen.get_title('MENU'))
 
         match selected:
             case 'Combattre':
                 result,  data = self.battle()
                 if result == 'flee':
                     self.tell('Vous fuyez le combat...')
-                    self.screen.menu(actions=['OK'], text='Vous fuyez le combat...')
+                    goldloss = round(randint(5,10) * self.player.lvl)
+                    self.screen.menu(actions=['OK'], text=f'Vous perdez {goldloss} pièces :money_bag: pendant votre fuite!')
+                    self.player.argent -= goldloss
+                    if self.player.argent < 0: self.player.argent = 0
                 elif result:
                     pass
                 else:
                     self.respawn()
                 self.update_quests(data)
+                if randint(0,100) >= 90:
+                    self.get_event()
 
             case 'Sac':
                 self.sac()
@@ -182,6 +186,9 @@ class RPG:
             case 'Quêtes':
                 self.screen.menu(actions=['OK'], text=self.screen.get_quests(self.quests))
 
+            case 'Quitter':
+                self.quit()
+
     def is_quest_done(self, quest: list) -> bool:
         """
         Vérifie si une quête est terminée
@@ -201,14 +208,20 @@ class RPG:
 
     def eglise(self) -> None:
         """
-        Permet au joueur de récupérer ses points de vies
+        Permet au joueur de récupérer ses points de vies et des potions
         """
         self.tell(string="Vous vous rendez à l'église pour prier...")
-        self.screen.menu(actions=['OK'], text='Vos [bold green]PV[/bold green] ont été restaurés!')
+        self.screen.menu(actions=['OK'], text='Vos [bold green]PV[/bold green] et [bold bright_red]Potions[/bold bright_red] ont été restaurés!')
         self.player.pv = self.player.maxpv
+        self.player.bag.potions = 2
 
     def respawn(self) -> None:
-        pass
+        self.tell(string="Vous vous réveillez à l'église...")
+        goldloss = round(randint(5,10) * self.player.lvl)
+        self.screen.menu(actions=['OK'], text=f'Vous avez perdu {goldloss} pièces :money_bag:!')
+        self.player.argent -= goldloss
+        if self.player.argent < 0: self.player.argent = 0
+        self.eglise()
 
     def shop(self) -> None:
         if self.currentzone.shopfirsttime:
@@ -233,7 +246,7 @@ class RPG:
         self.screen.menu(actions=['OK'], text=self.affichagesac(self.player.bag.afficherobjs()))
 
     def affichagesac(self, dico: dict) -> str:
-        string = ''
+        string = f'Pièces :money_bag:: {self.player.argent}\n\n'
         for key in dico:
             string += key + ':\n'
             if len(dico[key]) == 0:
@@ -248,4 +261,57 @@ class RPG:
                         string += '  - ' + str(item) + '\n\n'
                     
         return string
-        
+    
+    def get_event(self) -> None:
+        self.screen.menu(actions=['OK'], text='Oh! Un évenement se déclenche!')
+        texte, catego, montant = self.event.evenement()
+        self.screen.menu(actions=['OK'], text=texte)
+        match catego:
+            case 'argent':
+                self.screen.menu(actions=['OK'], text=f'Vous gagnez {montant} pièces' if montant>0 else f'Vous perdez {abs(montant)} pièces')
+                self.player.argent += montant
+                if self.player.argent < 0: self.player.argent = 0
+            case 'pv':
+                self.screen.menu(actions=['OK'], text=f'Votre statistique de points de vie augmente de {montant}' if montant>0 else f'Votre statistique de points de vie diminue de {abs(montant)}')
+                self.player.basepv += montant
+                if self.player.basepv < 1: self.player.basepv = 1
+                self.player.maxpv = self.player.calc_stat(self.player.basepv, 'pv')
+            case 'atk':
+                self.screen.menu(actions=['OK'], text=f"Votre statistique d'attaque augmente de {montant}" if montant>0 else f"Votre statistique de d'attaque diminue de {abs(montant)}")
+                self.player.atk += montant
+                if self.player.atk < 1: self.player.atk = 1
+            case 'def':
+                self.screen.menu(actions=['OK'], text=f'Votre statistique de défense augmente de {montant}' if montant>0 else f'Votre statistique de défense diminue de {abs(montant)}')
+                self.player.arm += montant
+                if self.player.arm < 0: self.player.arm = 0
+            case 'stuff':
+                if montant < 0:
+                    if not self.player.bag.estvide():
+                        objet = None
+                        while objet == None :
+                            cat = choice(list(self.player.bag.Stuf.keys()))
+                            if not len(self.player.bag.Stuf[cat]) == 0:
+                                objet = choice(self.player.bag.Stuf[cat]) if len(self.player.bag.Stuf[cat]) > 1 else self.player.bag.Stuf[cat][0]
+                        self.player.bag.enleverobj(objet, self.player)
+                        self.screen.menu(actions=['OK'], text=f'Vous perdez {objet}!')
+                    else:
+                        self.screen.menu(actions=['OK'], text=f"Vous n'avez pas d'objets à perdre")
+                else:
+                    cat = choice(['Dégats', 'Spécial', 'Vitesse', 'Defense'])
+                    obj = choice(self.currentzone.shop.Objets[cat])
+                    self.player.bag.ajouterobj(obj, self.player)
+                    self.screen.menu(actions=['OK'], text=f'Vous avez gagné {obj}!')
+            case 'double':
+                selected = self.screen.menu(actions=['Oui', 'Non'], text=f'Voulez vous tenter votre chance?')
+                match selected:
+                    case 'Oui':
+                        if randint(0,100)>=50:
+                            self.screen.menu(actions=['OK'], text='Vous avez gagné votre pari! Vos pièces ont été doublées')
+                        else:
+                            self.screen.menu(actions=['OK'], text='Vous avez perdu!')
+                    case _:
+                        pass
+    
+    def quit(self) -> None:
+        if self.screen.menu(actions=['Oui', 'Non'], text='Êtes vous sûr de vouloir quitter?') == 'Oui':
+            exit(1)

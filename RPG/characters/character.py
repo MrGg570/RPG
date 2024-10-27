@@ -41,7 +41,7 @@ class Character:
                 return round(base * self.f * (1 + r) ** (self.lvl - 1))
             
             case 'xp':
-                r = .1
+                r = .02
                 return round(base * (1 + r) ** (self.lvl - 1))
 
         

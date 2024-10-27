@@ -52,7 +52,17 @@ class Combat:
                                 self.display.menu(actions=['OK'], text=self.display.get_multiple_healthbars(player=self.player, enemies=enemies), info = f'Vous ratez votre attaque!')
 
                 case 'Bag':
-                    backed = True
+                    if self.player.bag.potions > 0:
+                        selected = self.display.menu(actions = ['Oui', 'Non'], text = self.display.get_multiple_healthbars(player=self.player, enemies=enemies), info = f'Voulez vous utiliser une potion pour récuperer 1/4 des pv?\nPotions restantes: {self.player.bag.potions}')
+                        match selected:
+                            case 'Non':
+                                backed = True
+                            case 'Oui':
+                                self.player.bag.potions -= 1
+                                self.player.pv += round((1/4) * self.player.maxpv)
+                    else:
+                        backed = True
+                        self.display.menu(actions = ['OK'], text = self.display.get_multiple_healthbars(player=self.player, enemies=enemies), info = "Vous n'avez plus de potions. Rendez vous à l'église pour en récupérer")
 
                 case 'Flee':
                     return 'flee', self.get_battle_data(enemies=enemies)
@@ -88,17 +98,24 @@ class Combat:
                 exp += i.lvl * randint(500,1000)
             else:
                 exp += round((i.lvl * randint(100, 500))/len(enemies))
+        
+        for i in enemies:
+            if i.name in ('Fallen angel', 'Soul eater'):
+                gold += i.lvl * randint(20,40)
+            else:
+                gold += round((i.lvl * randint(5, 10))/len(enemies))
 
-        self.display.menu(actions = ['OK'], text = lastbar, info = f':sparkles: [green]Vous[/green] [bold]gagnez[/bold] [bold gold1]{exp} XP[/bold gold1] :sparkler:!')
+        self.display.menu(actions = ['OK'], text = lastbar, info = f':sparkles: [green]Vous[/green] [bold]gagnez[/bold] [bold gold1]{exp} XP[/bold gold1] :sparkler: et [bold gold1]{gold} pièces[/bold gold1] :money_bag: !')
         self.player.xp += exp
+        self.player.argent += gold
         self.display.menu(actions = ['OK'], text = lastbar, info = self.display.get_xpbar(self.player) + '\n')
 
         self.player.xp += exp
         while self.player.maxxp <= self.player.xp:
             self.display.menu(actions = ['OK'], text = lastbar, info = f'Vous passez niveau {self.player.lvl + 1}!')
             self.player.lvl += 1
-            self.player.lvlup()
             self.player.xp -= self.player.maxxp
+            self.player.lvlup()
             self.display.menu(actions = ['OK'], text = lastbar, info = self.display.get_xpbar(self.player) + '\n')
 
         if enemies[0].name == 'Seigneur Stellaire':

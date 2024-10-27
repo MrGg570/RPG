@@ -1,5 +1,5 @@
 Par matys: matys.py, nether.py, phenix.py, dragonneau.py, sorciere.py, esprit.py, seigneurstellaire.py
-Par quentin: /
+Par quentin: quentin.py
 Par Bastien: tout le reste lol
 
 

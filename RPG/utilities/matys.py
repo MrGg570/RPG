@@ -8,7 +8,7 @@ class Objets:
         self.effet = effet  # entier
 
     def __str__(self):
-        return f'{self.nom}: +{self.effet} {self.categorie if self.categorie != "Spécial" else "Toutes les sats"}'
+        return f'{self.nom}: +{self.effet} {self.categorie if self.categorie != "Spécial" else "Toutes les stats"}'
 
 class Shop:
     def __init__(self):
@@ -50,7 +50,6 @@ class Shop:
             categorie = choice(list(self.Objets.keys()))
             objet = choice(self.Objets[categorie])
             self.Objetsdispo.append(objet)
-        self.Objetsdispo.append(self.Objets["Spécial"][0])
 
     def Direbonjour(self):
         if self.simpatie > 50:
@@ -105,12 +104,10 @@ class Shop:
 class Stuf:
     def __init__(self):
         self.Stuf = {"Dégats": [], "Vitesse": [], "Defense": [], "Spécial": []}
+        self.potions = 2
 
     def ajouterobj(self, objet, joueur):
-        try:
-            self.Stuf[objet.categorie].append(objet)  # Ajoute l'objet dans la bonne catégorie de l'inventaire
-        except Exception as e:
-            pass
+        self.Stuf[objet.categorie].append(objet)  # Ajoute l'objet dans la bonne catégorie de l'inventaire
         if objet.categorie == "Dégats":
             joueur.atk += objet.effet
         elif objet.categorie == "Defense":
@@ -122,5 +119,22 @@ class Stuf:
             joueur.arm += objet.effet
             joueur.pv += objet.effet
 
+    def enleverobj(self, objet, joueur):
+        self.Stuf[objet.categorie].remove(objet)
+        if objet.categorie == "Dégats":
+            joueur.atk -= objet.effet
+        elif objet.categorie == "Defense":
+            joueur.arm -= objet.effet
+        elif objet.categorie == "Vitesse":
+            pass
+        elif objet.categorie == "Spécial":
+            joueur.atk -= objet.effet
+            joueur.arm -= objet.effet
+            joueur.pv -= objet.effet
+
+
     def afficherobjs(self):
         return self.Stuf
+    
+    def estvide(self):
+        return len(self.Stuf['Dégats']) == 0 and len(self.Stuf['Vitesse']) == 0 and len(self.Stuf['Defense']) == 0 and len(self.Stuf['Defense']) == 0
