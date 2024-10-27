@@ -95,22 +95,21 @@ class Combat:
 
         for i in enemies:
             if i.name in ('Fallen angel', 'Soul eater'):
-                exp += i.lvl * randint(500,1000)
+                exp += round(i.calc_stat(75,'xpdrop')/len(enemies))
             else:
-                exp += round((i.lvl * randint(100, 500))/len(enemies))
+                exp += round(i.calc_stat(25,'xpdrop')/len(enemies))
         
         for i in enemies:
             if i.name in ('Fallen angel', 'Soul eater'):
-                gold += i.lvl * randint(20,40)
+                gold += round(i.calc_stat(15,'xpdrop')/len(enemies))
             else:
-                gold += round((i.lvl * randint(5, 10))/len(enemies))
+                gold += round(i.calc_stat(5,'xpdrop')/len(enemies))
 
         self.display.menu(actions = ['OK'], text = lastbar, info = f':sparkles: [green]Vous[/green] [bold]gagnez[/bold] [bold gold1]{exp} XP[/bold gold1] :sparkler: et [bold gold1]{gold} pièces[/bold gold1] :money_bag: !')
         self.player.xp += exp
         self.player.argent += gold
         self.display.menu(actions = ['OK'], text = lastbar, info = self.display.get_xpbar(self.player) + '\n')
 
-        self.player.xp += exp
         while self.player.maxxp <= self.player.xp:
             self.display.menu(actions = ['OK'], text = lastbar, info = f'Vous passez niveau {self.player.lvl + 1}!')
             self.player.lvl += 1

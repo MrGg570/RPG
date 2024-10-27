@@ -94,7 +94,7 @@ class Display:
         Retourne une chaine de caractères représentant une barre d'expérience
         """
         length = 30
-        fullbarlength = round(player.xp / player.maxxp * length) if player.xp <= player.maxxp else length
+        fullbarlength = round(player.xp / player.maxxp * length) if player.xp <= player.maxxp else 30
         color = "gold3" if player.xp >= 75/100 * player.maxxp else "light_goldenrod3" if player.xp >= 50/100 * player.maxxp else "tan" if player.xp >= 25/100 * player.maxxp else "misty_rose3"
         return f":sparkler:  [underline bold gold1]XP[/underline bold gold1] [{color} on {color}]{fullbarlength * ' '}[/{color} on {color}][grey19 on grey19]{(length - fullbarlength) * ' '}[/grey19 on grey19] [bold gold1]{player.xp}/{player.maxxp}[/bold gold1]"
     

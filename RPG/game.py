@@ -26,7 +26,7 @@ class RPG:
         self.region.append(zonebuilder.Build.create_zone(name='', type='boss', lvl=(50,50)))
         self.currentzone = self.region[0]
 
-        self.quests = {1:['Vaincre 10 ennemies', 10, 10, 'kill'], 2: ['Infliger 1 000 points de dégat', 1000, 1000, 'dmg'], 3:['Vaincre 50 ennemies', 50, 50, 'kill'], 4: ['Infliger 10 000 points de dégat', 10000, 10000, 'dmg'],5:['Vaincre 150 ennemies', 150, 150, 'kill']}
+        self.quests = {1:['Vaincre 10 ennemies', 0, 10, 'kill'], 2: ['Infliger 1 000 points de dégat', 0, 1000, 'dmg'], 3:['Vaincre 50 ennemies', 0, 50, 'kill'], 4: ['Infliger 10 000 points de dégat', 0, 10000, 'dmg'],5:['Vaincre 150 ennemies', 0, 150, 'kill']}
 
         start = False
         while not start:
@@ -102,9 +102,12 @@ class RPG:
         """
         Crée des ennemies et lance un combat
         """
-        enemiesnumber = randint(1, 3)
+        if self.currentzone.type.lower() == 'boss':
+            enemiesnumber = 1
+        else:
+            enemiesnumber = randint(1, 3)
         enemies = list()
-        if enemiesnumber == 1 and randint(0, 100) <= 5:
+        if enemiesnumber == 1 and randint(0, 100) <= 5 and not self.currentzone.type.lower() == 'boss':
             name = self.get_enemy(True)
         else:
             name = self.get_enemy()
@@ -117,7 +120,7 @@ class RPG:
         Retourne un ennemi parmis ceux disponible dans la zone
         """
         if self.currentzone.type.lower() == 'boss':
-            return 'seigneurstellaire'
+            return 'seigneur stellaire'
         return choice(self.currentzone.monsters) if not special else choice(self.specialmonsters)
     
     def get_level(self) -> int:
@@ -206,11 +209,12 @@ class RPG:
             elif self.quests[quest][3] == 'dmg':
                 self.quests[quest][1] += dmg
 
-    def eglise(self) -> None:
+    def eglise(self, respawn: bool = False) -> None:
         """
         Permet au joueur de récupérer ses points de vies et des potions
         """
-        self.tell(string="Vous vous rendez à l'église pour prier...")
+        if not respawn:
+            self.tell(string="Vous vous rendez à l'église pour prier...")
         self.screen.menu(actions=['OK'], text='Vos [bold green]PV[/bold green] et [bold bright_red]Potions[/bold bright_red] ont été restaurés!')
         self.player.pv = self.player.maxpv
         self.player.bag.potions = 2
@@ -221,7 +225,7 @@ class RPG:
         self.screen.menu(actions=['OK'], text=f'Vous avez perdu {goldloss} pièces :money_bag:!')
         self.player.argent -= goldloss
         if self.player.argent < 0: self.player.argent = 0
-        self.eglise()
+        self.eglise(True)
 
     def shop(self) -> None:
         if self.currentzone.shopfirsttime:
@@ -269,7 +273,7 @@ class RPG:
         match catego:
             case 'argent':
                 self.screen.menu(actions=['OK'], text=f'Vous gagnez {montant} pièces' if montant>0 else f'Vous perdez {abs(montant)} pièces')
-                self.player.argent += montant
+                self.player.argent += self.player.calc_stat(montant, 'xp')
                 if self.player.argent < 0: self.player.argent = 0
             case 'pv':
                 self.screen.menu(actions=['OK'], text=f'Votre statistique de points de vie augmente de {montant}' if montant>0 else f'Votre statistique de points de vie diminue de {abs(montant)}')

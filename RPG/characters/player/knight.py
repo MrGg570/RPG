@@ -8,7 +8,7 @@ class Knight(Character):
         self.isplayer = True
 
         self.xp = 0
-        self.maxxp = 1000
+        self.maxxp = 50
 
         self.argent = 0
 

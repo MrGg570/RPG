@@ -4,6 +4,7 @@ from RPG.characters.swamp import sorciere, esprit
 from RPG.characters.nether import dragonneau, phenix
 from RPG.characters.player import archer, knight, mage, warrior
 from RPG.characters.special import fallenangel, souleater
+from RPG.characters import boss
 
 class Build:
     """
@@ -50,8 +51,11 @@ class Build:
             case 'fallen angel':
                 return fallenangel.Fallen_angel(lvl=lvl, f=f)
             
+            case 'seigneur stellaire':
+                return boss.Seigneur_Stellaire(lvl=lvl, f=f)
+            
             case _:
-                raise Exception('Specified enemy name does not exist')
+                raise Exception(f'Specified enemy name does not exist "{name}"')
 
     @classmethod 
     def create_player(self, name: str = 'Player', playerclass: str = 'knight') -> object:

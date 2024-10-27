@@ -41,9 +41,12 @@ class Character:
                 return round(base * self.f * (1 + r) ** (self.lvl - 1))
             
             case 'xp':
-                r = .02
+                r = .04
                 return round(base * (1 + r) ** (self.lvl - 1))
 
+            case 'xpdrop':
+                r = .1
+                return round(base * (1 + r) ** (self.lvl - 1))
         
     def attack(self, other: 'Character', attack: str) -> bool:
         """
