@@ -103,11 +103,11 @@ class Display:
         Retourne une chaine de caractère représentant une carte avec la position du joueur
         """
         string = 'Vous : [bold green]O[/bold green]\n\n'
-        string += ('\u250c' + '\u2500'*3 + '\u2510' + '  ') * 5 + '\n'
+        string += ('\u250c' + '\u2500'*3 + '\u2510' + '  ') * 6 + '\n'
         for i, e in enumerate(region):
             string += ('\u2502' + (' [bold green]O[/bold green] ' if e == currentzone else '   ') + '\u2502' + (' \u2192' if i < len(region)-1 else ''))
-        string += '\n' + ('\u2514' + '\u2500'*3 + '\u2518' + '  ') * 5 + '\n'
-        string += 'Niv5   Niv15  Niv25  Niv35  Niv45  Boss\n'
+        string += '\n' + ('\u2514' + '\u2500'*3 + '\u2518' + '  ') * 6 + '\n'
+        string += 'Niv5   Niv15  Niv25  Niv35  Niv45  Boss(50)\n'
         return string
     
     def get_quests(self, quests: dict) -> str:

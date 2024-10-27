@@ -1,4 +1,5 @@
 from random import randint, uniform
+from RPG.utilities.matys import Stuf
 
 class Character:
     """
@@ -23,6 +24,9 @@ class Character:
 
         self.attacks = dict()
 
+        self.bag = Stuf()
+
+
     def calc_stat(self, base: int, stat: str = 'atk') -> int:
         """
         Permet de calculer les statistiques selon le niveau à partir des statistiques de base (modèle exponentiel)
@@ -35,6 +39,10 @@ class Character:
             case 'pv':
                 r = .05
                 return round(base * self.f * (1 + r) ** (self.lvl - 1))
+            
+            case 'xp':
+                r = .1
+                return round(base * (1 + r) ** (self.lvl - 1))
 
         
     def attack(self, other: 'Character', attack: str) -> bool:

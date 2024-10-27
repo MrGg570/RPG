@@ -13,3 +13,4 @@ class Zone:
         self.monsters = monsters
 
         self.shop = Shop()
+        self.shopfirsttime = True

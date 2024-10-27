@@ -11,19 +11,21 @@ class RPG:
         self.screen = display.Display()
 
         self.region = list()
-        zonetype = ('forest', 'desert')
+        zonetype = ('forest', 'desert', 'swamp', 'nether')
         zonename = {
             'forest': ['Deep forest', 'Scary forest', 'Death forest', 'Spooky forest', 'Unpleasant forest'],
-            'desert': ['Dry desert', 'Creepy desert', 'Torrid desert', 'Burning desert', 'Unpleasant desert'] 
+            'desert': ['Dry desert', 'Creepy desert', 'Torrid desert', 'Burning desert', 'Unpleasant desert'],
+            'swamp': ['Deep swamp', 'Scary swamp', 'Death swamp', 'Spooky swamp', 'Unpleasant swamp'],
+            'nether': ['Dry nether', 'Creepy nether', 'Torrid nether', 'Burning nether', 'Unpleasant nether']
                     }
         for i in range(5):
             chosentype = choice(zonetype)
             self.region.append(zonebuilder.Build.create_zone(name=choice(zonename[chosentype]), type=chosentype, lvl=(i*10+1, i*10+10)))
             zonename[chosentype].pop(zonename[chosentype].index(self.region[-1].name)) # Pour que chaque zone ai un nom différent
-        # self.region.append(boss)
+        self.region.append(zonebuilder.Build.create_zone(name='', type='boss', lvl=(50,50)))
         self.currentzone = self.region[0]
 
-        self.quests = {1:['Vaincre 10 ennemies', 0, 10, 'kill'], 2: ['Infliger 500 points de dégat', 0, 500, 'dmg']}
+        self.quests = {1:['Vaincre 10 ennemies', 0, 10, 'kill'], 2: ['Infliger 1 000 points de dégat', 0, 1000, 'dmg'], 3:['Vaincre 50 ennemies', 0, 50, 'kill'], 4: ['Infliger 10 000 points de dégat', 0, 10000, 'dmg']}
 
         start = False
         while not start:
@@ -59,21 +61,21 @@ class RPG:
         validname = False
 
         while not validname:
-            self.tell("What's your name, adventurer?\n", style='bold gold1')
+            self.tell("Quel est tom nom, aventurier?\n", style='bold gold1')
             name = input('>>> ')
             if len(name)>25:
-                self.tell("Oh... I'm afraid that name is too long... Could you try another one?", style='bold gold1')
-                self.screen.menu(actions=['OK'], text="[bold gold1]Oh... I'm afraid that name is too long... Could you try another one?[/bold gold1]")
+                self.tell("Oh... On dirait que ce nom est trop long, peux-tu en essayer un autre?", style='bold gold1')
+                self.screen.menu(actions=['OK'], text="[bold gold1]Oh... On dirait que ce nom est trop long, peux-tu en essayer un autre?[/bold gold1]")
             elif name == '':
-                self.tell("Oh... I'm afraid that name will not work... Could you try another one?", style='bold gold1')
-                self.screen.menu(actions=['OK'], text="[bold gold1]Oh... I'm afraid that name will not work... Could you try another one?[/bold gold1]")
+                self.tell("Oh... Ce nom ne fait malheureusement pas l'affaire, essaye en un autre.", style='bold gold1')
+                self.screen.menu(actions=['OK'], text="[bold gold1]Oh... Ce nom ne fait malheureusement pas l'affaire, essaye en un autre.[/bold gold1]")
             else:
                 validname = True
 
-        self.tell(f"So your name is {name}... And what class do you belong to?", style='bold gold1')
-        self.player = characterbuilder.Build.create_player(name=name, playerclass=self.screen.menu(actions=['Knight'], text=f"[bold gold1]So your name is {name}... And what class do you belong to?[/bold gold1]\n"))
+        self.tell(f"Donc ton nom est [bold green]{name}[/bold green]... Et quelle est ta classe?", style='bold gold1')
+        self.player = characterbuilder.Build.create_player(name=name, playerclass=self.screen.menu(actions=['Archer', 'Knight', 'Mage', 'Warrior'], text=f"[bold gold1]Donc ton nom est [bold green]{name}[/bold green]... Et quelle est ta classe?[/bold gold1]\n"))
 
-        self.tell(f'Seems like you have awaken in a {self.currentzone.type}...', style='bold gold1')
+        self.tell(f"On dirait que tu t'es réveillé dans {self.currentzone.type}...", style='bold gold1')
 
         self.combat = fight.Combat(player=self.player, display=self.screen)
             
@@ -115,15 +117,19 @@ class RPG:
         """
         Retourne un ennemi parmis ceux disponible dans la zone
         """
+        if self.currentzone.type.lower() == 'boss':
+            return 'seigneurstellaire'
         return choice(self.currentzone.monsters) if not special else choice(self.specialmonsters)
     
     def get_level(self) -> int:
         """
         Retourne un niveau d'ennemi approprié par rapport à la zone et au joueur
         """
+        if self.currentzone.type.lower() == 'boss':
+            return 50
         if self.currentzone.lvl[0] > self.player.lvl:
             return randint(self.currentzone.lvl[0], self.currentzone.lvl[0]+4)
-        chosenlvl = 100
+        chosenlvl = 9999
         while chosenlvl > self.player.lvl+1:
             chosenlvl = randint(*self.currentzone.lvl)
         return chosenlvl
@@ -147,17 +153,11 @@ class RPG:
                 self.update_quests(data)
 
             case 'Sac':
-                pass
+                self.sac()
 
             case 'Boutique':
-                text = self.currentzone.shop.Direbonjour()
-                self.tell(text)
-                self.screen.menu(actions=['OK'], text=text)
-                liste = self.currentzone.shop.afficher_inventaire()
-                liste.append('Back')
-                selected = self.screen.menu(actions=liste)
+                self.shop()
                 
-
             case 'Eglise':
                 self.eglise()
 
@@ -209,3 +209,43 @@ class RPG:
 
     def respawn(self) -> None:
         pass
+
+    def shop(self) -> None:
+        if self.currentzone.shopfirsttime:
+            text = self.currentzone.shop.Direbonjour()
+            self.tell(text)
+            self.screen.menu(actions=['OK'], text=text)
+            self.currentzone.shopfirsttime = False
+        while True:
+            liste = list()
+            for i in self.currentzone.shop.afficher_inventaire():
+                liste.append(str(i) + f' -> {round(i.prix * (1 - self.currentzone.shop.reduction / 100))} pièces')
+            liste.append('Back')
+            selected = self.screen.menu(actions=liste, text=f'Vous avez {self.player.argent} pièces')
+            match selected:
+                case 'Back':
+                    return
+                
+                case _:
+                    self.screen.menu(actions=['OK'], text=self.currentzone.shop.acheter_objet(selected.split(':')[0], self.player))
+
+    def sac(self) -> None:
+        self.screen.menu(actions=['OK'], text=self.affichagesac(self.player.bag.afficherobjs()))
+
+    def affichagesac(self, dico: dict) -> str:
+        string = ''
+        for key in dico:
+            string += key + ':\n'
+            if len(dico[key]) == 0:
+                string += '  /\n\n'
+            else:
+                i = 0
+                for item in dico[key]:
+                    i += 1
+                    if len(dico[key]) > i:
+                        string += '  - ' + str(item) + '\n'
+                    else:
+                        string += '  - ' + str(item) + '\n\n'
+                    
+        return string
+        

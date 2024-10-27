@@ -1,5 +1,7 @@
 from RPG.characters.desert import mummy, skeleton
 from RPG.characters.forest import goblin, spider
+from RPG.characters.swamp import sorciere, esprit
+from RPG.characters.nether import dragonneau, phenix
 from RPG.characters.player import archer, knight, mage, warrior
 from RPG.characters.special import fallenangel, souleater
 
@@ -30,6 +32,18 @@ class Build:
             case 'mummy':
                 return mummy.Mummy(lvl=lvl, enemies=enemies, f=f)
             
+            case 'sorciere':
+                return sorciere.Sorciere(lvl=lvl, enemies=enemies, f=f)
+            
+            case 'esprit':
+                return esprit.Esprit(lvl=lvl, enemies=enemies, f=f)
+            
+            case 'dragonneau':
+                return dragonneau.Dragonneau(lvl=lvl, enemies=enemies, f=f)
+            
+            case 'phenix':
+                return phenix.Phenix(lvl=lvl, enemies=enemies, f=f)
+            
             case 'soul eater':
                 return souleater.Soul_eater(lvl=lvl, f=f)
             
@@ -49,16 +63,16 @@ class Build:
         match playerclass:
 
             case 'knight':
-                return knight.Knight(name)
+                return knight.Knight(name=name)
 
             case 'warrior':
-                pass
+                return warrior.Warrior(name=name)
 
             case 'mage':
-                pass
+                return mage.Mage(name=name)
 
             case 'archer':
-                pass
+                return archer.Archer(name=name)
 
             case _:
                 raise Exception('Specified player class does not exist')

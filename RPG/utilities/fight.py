@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, randint
 
 class Combat:
     """
@@ -85,9 +85,9 @@ class Combat:
 
         for i in enemies:
             if i.name in ('Fallen angel', 'Soul eater'):
-                exp += i.lvl * 300
+                exp += i.lvl * randint(500,1000)
             else:
-                exp += i.lvl * 100
+                exp += round((i.lvl * randint(100, 500))/len(enemies))
 
         self.display.menu(actions = ['OK'], text = lastbar, info = f':sparkles: [green]Vous[/green] [bold]gagnez[/bold] [bold gold1]{exp} XP[/bold gold1] :sparkler:!')
         self.player.xp += exp
@@ -100,6 +100,10 @@ class Combat:
             self.player.lvlup()
             self.player.xp -= self.player.maxxp
             self.display.menu(actions = ['OK'], text = lastbar, info = self.display.get_xpbar(self.player) + '\n')
+
+        if enemies[0].name == 'Seigneur Stellaire':
+            self.display.menu(actions = ['OK'], text = lastbar, info = 'Félicitation! Vous avez fini le jeu!')
+            exit(1)
         
         return True
 

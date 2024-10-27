@@ -1,22 +1,28 @@
+Par matys: matys.py, nether.py, phenix.py, dragonneau.py, sorciere.py, esprit.py, seigneurstellaire.py
+Par quentin: /
+Par Bastien: tout le reste lol
+
+
+
+
 # Compte-rendu
 
 **__Table des matières:__**
 
-* [Le projet "en gros"](#détails-du-projet)
-
-    - [Quest'ce qu'est ce projet?](#jeu-de-rôle-rpg)
-
-    - [Règles du jeu/projet](#règles)
-
-* [Structures de données](#structures-de-données)
-
-    - [Dossier Game](#game)
-
-    - [Dossier Persos](#persos)
- 
-    - [Dossier Régions](#régions)
- 
-    - [Dossier Inputs](#inputs)
+- [Compte-rendu](#compte-rendu)
+- [Détails du projet](#détails-du-projet)
+  - [Jeu de rôle (RPG)](#jeu-de-rôle-rpg)
+  - [Règles](#règles)
+    - [Menu](#menu)
+    - [Joueur](#joueur)
+    - [Ennemis](#ennemis)
+    - [Déplacement](#déplacement)
+    - [Combat](#combat)
+- [Structures de données](#structures-de-données)
+  - [Game](#game)
+  - [Persos](#persos)
+  - [Régions](#régions)
+  - [Inputs](#inputs)
 
 # Détails du projet
 
