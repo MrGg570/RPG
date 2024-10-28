@@ -30,6 +30,10 @@
   - [Bastien](#bastien)
 - [Comment jouer](#comment-jouer)
   - [Télécharger le code](#télécharger-le-code)
+  - [Extraire le zip](#extraire-le-zip)
+  - [Installer les dépendances](#installer-les-dépendances)
+  - [Lancer le jeu](#lancer-le-jeu)
+    - [⚠️ Si vous avez le moindre problème, une version compilé est comprise dans les fichier (`RPG\build\RPG.exe`)](#️-si-vous-avez-le-moindre-problème-une-version-compilé-est-comprise-dans-les-fichier-rpgbuildrpgexe)
 
 # Détails du projet
 
@@ -210,3 +214,23 @@ Il a aussi réalisé l'entièreté du compte-rendu et de la [documentation](./do
 ## Télécharger le code
 
 Vous pouvez le télécharger en cliquant [ici]()
+
+## Extraire le zip
+
+## Installer les dépendances
+
+Se mettre dans le répertoire où se trouve `main.py` et `requirement.txt` et executer la commande suivante:
+```ssh
+python -m pip install -r requirements.txt
+```
+
+## Lancer le jeu
+
+Il ne vous reste maintenant plus qu'à lancer le jeu!
+```ssh
+python -m pip install -r requirements.txt
+```
+
+***Note: pour une meilleur expérience, veuillez utiliser le nouveau terminal windows (pas l'invite de commande) ou le terminal intégré de Visual Studio Code***
+
+### ⚠️ Si vous avez le moindre problème, une version compilé est comprise dans les fichier (`RPG\build\RPG.exe`)
