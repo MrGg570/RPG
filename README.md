@@ -151,7 +151,7 @@ Chaque personnage possède 3 méthodes:
 Le joueur possède une méthode en plus: lvlup
 Elle est appelé quand le joueur monte de niveau.
 
-(Pour plus d'info voir les [docs](./docs/index.html))
+(Pour plus d'info voir les [docs](https://mrgg570.github.io/RPG/)
 
 ## Zones
 
