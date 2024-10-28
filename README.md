@@ -207,7 +207,7 @@ Quentin a réalisé le code contenu dans les fichiers suivants:
 
 Bastien a réalisé tout le reste du code, ainsi que l'implémentation et la mise en relation des codes de chacun dans le projet final.
 
-Il a aussi réalisé l'entièreté du compte-rendu et de la [documentation](./docs/index.html), ainsi que la compilation en .exe du jeu.
+Il a aussi réalisé l'entièreté du compte-rendu et de la [documentation](https://mrgg570.github.io/RPG/), ainsi que la compilation en .exe du jeu.
 
 # Comment jouer
 
