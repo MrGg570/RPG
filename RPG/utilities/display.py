@@ -112,23 +112,10 @@ class Display:
     
     def get_quests(self, quests: dict) -> str:
         """
-        Retourne une chaine de caractère permettant d'afficher lkes quêtes du joueur
+        Retourne une chaine de caractère permettant d'afficher les quêtes du joueur
         """
         string = ''
         for i, e in enumerate(quests.keys()):
             style = 'bold green' if quests[e][1] >= quests[e][2] else 'bold bright_red'
             string += f'[{style}]Quête {i+1}: {quests[e][0]} ({quests[e][1]}/{quests[e][2]})[/{style}]\n'
         return string
-
-'''
-° vous
-
-barre verticale : '\u2502'
-barre horizontale : '\u2500'
-
-coin haut gauche :  '\u250c'
-coin haut droit : '\u2510'
-coin bas gauche : '\u2514'
-coin bas droite :  '\u2518'
-
-'''

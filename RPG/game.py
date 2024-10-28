@@ -220,6 +220,9 @@ class RPG:
         self.player.bag.potions = 2
 
     def respawn(self) -> None:
+        """
+        Appelé quand le joueur meurt lors d'un combat
+        """
         self.tell(string="Vous vous réveillez à l'église...")
         goldloss = round(randint(5,10) * self.player.lvl)
         self.screen.menu(actions=['OK'], text=f'Vous avez perdu {goldloss} pièces :money_bag:!')
@@ -228,6 +231,9 @@ class RPG:
         self.eglise(True)
 
     def shop(self) -> None:
+        """
+        Permet de gérer l'interaction avec la boutique
+        """
         if self.currentzone.shopfirsttime:
             text = self.currentzone.shop.Direbonjour()
             self.tell(text)
@@ -247,9 +253,15 @@ class RPG:
                     self.screen.menu(actions=['OK'], text=self.currentzone.shop.acheter_objet(selected.split(':')[0], self.player))
 
     def sac(self) -> None:
+        """
+        Affiche un menu avec le contenu du sac
+        """
         self.screen.menu(actions=['OK'], text=self.affichagesac(self.player.bag.afficherobjs()))
 
     def affichagesac(self, dico: dict) -> str:
+        """
+        Retourne le contenu du sac
+        """
         string = f'Pièces :money_bag:: {self.player.argent}\n\n'
         for key in dico:
             string += key + ':\n'
@@ -262,11 +274,13 @@ class RPG:
                     if len(dico[key]) > i:
                         string += '  - ' + str(item) + '\n'
                     else:
-                        string += '  - ' + str(item) + '\n\n'
-                    
+                        string += '  - ' + str(item) + '\n\n'      
         return string
     
     def get_event(self) -> None:
+        """
+        Appelé lorsqu'on veut lancer un événement. Gère l'affichage et les effets d'un evenement tiré au hasard
+        """
         self.screen.menu(actions=['OK'], text='Oh! Un évenement se déclenche!')
         texte, catego, montant = self.event.evenement()
         self.screen.menu(actions=['OK'], text=texte)
@@ -317,5 +331,8 @@ class RPG:
                         pass
     
     def quit(self) -> None:
+        """
+        Appelé pour quitter le jeu
+        """
         if self.screen.menu(actions=['Oui', 'Non'], text='Êtes vous sûr de vouloir quitter?') == 'Oui':
             exit(1)

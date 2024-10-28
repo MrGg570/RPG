@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>RPG.utilities.matys API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>RPG.utilities.matys</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="RPG.utilities.matys.Objets"><code class="flex name class">
+<span>class <span class="ident">Objets</span></span>
+<span>(</span><span>nom, prix, categorie, effet)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Objets:
+    def __init__(self, nom, prix, categorie, effet):
+        self.nom = nom  # texte
+        self.prix = prix  # entier
+        self.categorie = categorie  # texte
+        self.effet = effet  # entier
+
+    def __str__(self):
+        return f&#39;{self.nom}: +{self.effet} {self.categorie if self.categorie != &#34;Spécial&#34; else &#34;Toutes les stats&#34;}&#39;</code></pre>
+</details>
+</dd>
+<dt id="RPG.utilities.matys.Shop"><code class="flex name class">
+<span>class <span class="ident">Shop</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Shop:
+    def __init__(self):
+        self.simpatie = randint(0, 100)
+        self.Valeurprix = 0
+        self.reduction = 0  # Pourcentage de réduction appliqué
+        self.Objetsdispo = []
+
+        # Définitions des objets en magasin avec leurs catégories et effets.
+        self.Objets = {
+            &#34;Dégats&#34;: [
+                Objets(&#39;Torche&#39;, 10, &#39;Dégats&#39;, 2),
+                Objets(&#39;Epée de légende&#39;, 50, &#39;Dégats&#39;, 5),
+                Objets(&#39;Dague démoniaque&#39;, 70, &#39;Dégats&#39;, 7),
+                Objets(&#39;Fouchette&#39;, 5, &#39;Dégats&#39;, 1),
+                Objets(&#39;Turbo-marteau&#39;, 90, &#39;Dégats&#39;, 9)
+            ],
+            &#34;Spécial&#34;: [
+                Objets(&#39;Objets mystères&#39;, 40, &#39;objmystères&#39;, &#39;2 objets aléatoires&#39;),
+                Objets(&#39;Bouclier inébranlable&#39;, 75, &#39;Defense&#39;, 9),
+                Objets(&#39;Spatule dorée&#39;, 100, &#39;Spécial&#39;, 6)
+            ],
+            &#34;Vitesse&#34;: [
+                Objets(&#39;Botte draconique&#39;, 30, &#39;Vitesse&#39;, 5),
+                Objets(&#39;Geox qui court vite&#39;, 60, &#39;Vitesse&#39;, 8),
+                Objets(&#39;Botte du vieux pêcheur&#39;, 10, &#39;Vitesse&#39;, 1),
+                Objets(&#39;vieille sabate&#39;, 15, &#39;Vitesse&#39;, 3)
+            ],
+            &#34;Defense&#34;: [
+                Objets(&#39;Casque du roi arthur&#39;, 40, &#39;Defense&#39;, 6),
+                Objets(&#39;Chapeau de paille&#39;, 20, &#39;Defense&#39;, 2),
+                Objets(&#39;Casserole&#39;, 5, &#39;Defense&#39;, 1),
+                Objets(&#39;Bouclier doré&#39;, 50, &#39;Defense&#39;, 5)
+            ]
+        }
+
+        # Générer des objets aléatoires pour le magasin
+        for i in range(7):
+            categorie = choice(list(self.Objets.keys()))
+            objet = choice(self.Objets[categorie])
+            self.Objetsdispo.append(objet)
+
+    def Direbonjour(self):
+        if self.simpatie &gt; 50:
+            if self.simpatie &gt; 75:
+                self.reduction = 25
+                return &#34;Wow ce vendeur est super joyeux, profitez-en avec une réduction de 25% !!&#34;
+            else:
+                self.reduction = 15
+                return &#34;Le vendeur est de bonne humeur aujourd&#39;hui, il est temps de faire des affaires avec une réduction de 15%...&#34;
+        elif self.simpatie &lt; 50:
+            if self.simpatie &lt; 25:
+                self.reduction = -25  # Augmentation de 25% des prix
+                return &#34;Le vendeur est fou de colère, mieux vaut ne pas négocier aujourd&#39;hui... Les prix sont augmentés de 25%.&#34;
+            else:
+                self.reduction = -15  # Augmentation de 15% des prix
+                return &#34;Le vendeur est ronchon, les affaires vont être dures... Les prix sont augmentés de 15%.&#34;
+        else:
+            self.reduction = 0
+            return &#34;Le vendeur est normal. Les prix sont standard.&#34;
+
+    def afficher_inventaire(self):
+        return self.Objetsdispo
+
+    def acheter_objet(self, nom_objet, joueur):
+        # Recherche l&#39;objet dans le magasin
+        for objet in self.Objetsdispo:
+            if objet.nom == nom_objet:
+                # Calcul du prix avec la réduction
+                prix_final = round(objet.prix * (1 - self.reduction / 100))
+                
+                if joueur.argent &gt;= prix_final:  # Vérifie que le joueur a assez d&#39;argent
+                    joueur.argent -= prix_final  # Déduit le prix réduit de l&#39;argent du joueur
+                    if objet.categorie == &#34;objmystères&#34;:
+                        objetsrecu = []
+                        categorie = list(self.Objets.keys())
+                        categorie.remove(&#34;Spécial&#34;)
+                        for i in range(2):
+                            categoriechoisi = choice(categorie)
+                            obj = choice(self.Objets[categoriechoisi])
+                            joueur.bag.ajouterobj(obj, joueur)
+                            objetsrecu.append(obj)
+                        self.Objetsdispo.remove(objet)
+                        return f&#39;Vous recevez {objetsrecu[0]} et {objetsrecu[1]} pour {prix_final} pièces (réduction de {self.reduction}%).&#39;
+
+                    joueur.bag.ajouterobj(objet, joueur)  # Ajoute l&#39;objet dans l&#39;inventaire du joueur
+                    self.Objetsdispo.remove(objet)  # Retire l&#39;objet du magasin
+                    return f&#39;Vous avez acheté {objet.nom} pour {prix_final} pièces (réduction de {self.reduction}%).&#39;
+                else:
+                    return &#34;Vous n&#39;avez pas assez d&#39;argent pour cet objet.&#34;
+        return &#34;Cet objet n&#39;est pas disponible dans le magasin.&#34;</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="RPG.utilities.matys.Shop.Direbonjour"><code class="name flex">
+<span>def <span class="ident">Direbonjour</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="RPG.utilities.matys.Shop.acheter_objet"><code class="name flex">
+<span>def <span class="ident">acheter_objet</span></span>(<span>self, nom_objet, joueur)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="RPG.utilities.matys.Shop.afficher_inventaire"><code class="name flex">
+<span>def <span class="ident">afficher_inventaire</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="RPG.utilities.matys.Stuf"><code class="flex name class">
+<span>class <span class="ident">Stuf</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Stuf:
+    def __init__(self):
+        self.Stuf = {&#34;Dégats&#34;: [], &#34;Vitesse&#34;: [], &#34;Defense&#34;: [], &#34;Spécial&#34;: []}
+        self.potions = 2
+
+    def ajouterobj(self, objet, joueur):
+        self.Stuf[objet.categorie].append(objet)  # Ajoute l&#39;objet dans la bonne catégorie de l&#39;inventaire
+        if objet.categorie == &#34;Dégats&#34;:
+            joueur.atk += objet.effet
+        elif objet.categorie == &#34;Defense&#34;:
+            joueur.arm += objet.effet
+        elif objet.categorie == &#34;Vitesse&#34;:
+            pass
+        elif objet.categorie == &#34;Spécial&#34;:
+            joueur.atk += objet.effet
+            joueur.arm += objet.effet
+            joueur.pv += objet.effet
+
+    def enleverobj(self, objet, joueur):
+        self.Stuf[objet.categorie].remove(objet)
+        if objet.categorie == &#34;Dégats&#34;:
+            joueur.atk -= objet.effet
+        elif objet.categorie == &#34;Defense&#34;:
+            joueur.arm -= objet.effet
+        elif objet.categorie == &#34;Vitesse&#34;:
+            pass
+        elif objet.categorie == &#34;Spécial&#34;:
+            joueur.atk -= objet.effet
+            joueur.arm -= objet.effet
+            joueur.pv -= objet.effet
+
+
+    def afficherobjs(self):
+        return self.Stuf
+    
+    def estvide(self):
+        return len(self.Stuf[&#39;Dégats&#39;]) == 0 and len(self.Stuf[&#39;Vitesse&#39;]) == 0 and len(self.Stuf[&#39;Defense&#39;]) == 0 and len(self.Stuf[&#39;Defense&#39;]) == 0</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="RPG.utilities.matys.Stuf.afficherobjs"><code class="name flex">
+<span>def <span class="ident">afficherobjs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="RPG.utilities.matys.Stuf.ajouterobj"><code class="name flex">
+<span>def <span class="ident">ajouterobj</span></span>(<span>self, objet, joueur)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="RPG.utilities.matys.Stuf.enleverobj"><code class="name flex">
+<span>def <span class="ident">enleverobj</span></span>(<span>self, objet, joueur)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="RPG.utilities.matys.Stuf.estvide"><code class="name flex">
+<span>def <span class="ident">estvide</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="RPG.utilities" href="index.html">RPG.utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="RPG.utilities.matys.Objets" href="#RPG.utilities.matys.Objets">Objets</a></code></h4>
+</li>
+<li>
+<h4><code><a title="RPG.utilities.matys.Shop" href="#RPG.utilities.matys.Shop">Shop</a></code></h4>
+<ul class="">
+<li><code><a title="RPG.utilities.matys.Shop.Direbonjour" href="#RPG.utilities.matys.Shop.Direbonjour">Direbonjour</a></code></li>
+<li><code><a title="RPG.utilities.matys.Shop.acheter_objet" href="#RPG.utilities.matys.Shop.acheter_objet">acheter_objet</a></code></li>
+<li><code><a title="RPG.utilities.matys.Shop.afficher_inventaire" href="#RPG.utilities.matys.Shop.afficher_inventaire">afficher_inventaire</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="RPG.utilities.matys.Stuf" href="#RPG.utilities.matys.Stuf">Stuf</a></code></h4>
+<ul class="">
+<li><code><a title="RPG.utilities.matys.Stuf.afficherobjs" href="#RPG.utilities.matys.Stuf.afficherobjs">afficherobjs</a></code></li>
+<li><code><a title="RPG.utilities.matys.Stuf.ajouterobj" href="#RPG.utilities.matys.Stuf.ajouterobj">ajouterobj</a></code></li>
+<li><code><a title="RPG.utilities.matys.Stuf.enleverobj" href="#RPG.utilities.matys.Stuf.enleverobj">enleverobj</a></code></li>
+<li><code><a title="RPG.utilities.matys.Stuf.estvide" href="#RPG.utilities.matys.Stuf.estvide">estvide</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

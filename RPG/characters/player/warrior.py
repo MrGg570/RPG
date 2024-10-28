@@ -13,7 +13,10 @@ class Warrior(Character):
         self.argent = 0
 
     
-    def lvlup(self):
+    def lvlup(self) -> None:
+        """
+        Appelé pour augmenter les statistiques du joueur lors d'un gain de niveau
+        """
         self.atk += 5
         self.basepv += 5
         self.maxpv = self.calc_stat(self.basepv, 'pv')

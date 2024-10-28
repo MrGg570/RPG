@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>RPG.game API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>RPG.game</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="RPG.game.RPG"><code class="flex name class">
+<span>class <span class="ident">RPG</span></span>
+<span>(</span><span>skipintro: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Classe utilisée pour gérer l'entiereté du jeu et des modules</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RPG:
+    &#34;&#34;&#34;
+    Classe utilisée pour gérer l&#39;entiereté du jeu et des modules
+    &#34;&#34;&#34;
+    def __init__(self, skipintro: bool = False) -&gt; None:
+        self.screen = display.Display()
+        self.event = quentin.Event()
+
+        self.region = list()
+        zonetype = (&#39;forest&#39;, &#39;desert&#39;, &#39;swamp&#39;, &#39;nether&#39;)
+        zonename = {
+            &#39;forest&#39;: [&#39;Deep forest&#39;, &#39;Scary forest&#39;, &#39;Death forest&#39;, &#39;Spooky forest&#39;, &#39;Unpleasant forest&#39;],
+            &#39;desert&#39;: [&#39;Dry desert&#39;, &#39;Creepy desert&#39;, &#39;Torrid desert&#39;, &#39;Burning desert&#39;, &#39;Unpleasant desert&#39;],
+            &#39;swamp&#39;: [&#39;Deep swamp&#39;, &#39;Scary swamp&#39;, &#39;Death swamp&#39;, &#39;Spooky swamp&#39;, &#39;Unpleasant swamp&#39;],
+            &#39;nether&#39;: [&#39;Dry nether&#39;, &#39;Creepy nether&#39;, &#39;Torrid nether&#39;, &#39;Burning nether&#39;, &#39;Unpleasant nether&#39;]
+                    }
+        for i in range(5):
+            chosentype = choice(zonetype)
+            self.region.append(zonebuilder.Build.create_zone(name=choice(zonename[chosentype]), type=chosentype, lvl=(i*10+1, i*10+10)))
+            zonename[chosentype].pop(zonename[chosentype].index(self.region[-1].name)) # Pour que chaque zone ai un nom différent
+        self.region.append(zonebuilder.Build.create_zone(name=&#39;&#39;, type=&#39;boss&#39;, lvl=(50,50)))
+        self.currentzone = self.region[0]
+
+        self.quests = {1:[&#39;Vaincre 10 ennemies&#39;, 0, 10, &#39;kill&#39;], 2: [&#39;Infliger 1 000 points de dégat&#39;, 0, 1000, &#39;dmg&#39;], 3:[&#39;Vaincre 50 ennemies&#39;, 0, 50, &#39;kill&#39;], 4: [&#39;Infliger 10 000 points de dégat&#39;, 0, 10000, &#39;dmg&#39;],5:[&#39;Vaincre 150 ennemies&#39;, 0, 150, &#39;kill&#39;]}
+
+        start = False
+        while not start:
+            selected = self.screen.menu(actions=[&#39;Démarrer&#39;, &#39;Options&#39;, &#39;Quitter&#39;], text=self.screen.get_title(&#39;RPG&#39;))
+            match selected:
+                case &#39;Démarrer&#39;:
+                    start = True
+
+                case &#39;Options&#39;:
+                    selected =self.screen.menu(actions=[f&#39;Skip intro : {skipintro}&#39;, &#39;Langue : &#39;, &#39;Retour&#39;], text=self.screen.get_title(&#39;RPG&#39;))
+                    match selected:
+                        case &#39;Skip intro : True&#39;:
+                            skipintro = False
+                        case &#39;Skip intro : False&#39;:
+                            skipintro = True
+                        
+                        case _:
+                            pass
+
+                case &#39;Quitter&#39;:
+                    self.screen.clear()
+                    exit(1)
+
+        self.difficulty = 1.5
+        self.specialmonsters = (&#39;Soul eater&#39;, &#39;Fallen angel&#39;)
+
+        if skipintro:
+            self.player = characterbuilder.Build.create_player(name=&#39;ImThePlayerOwO&#39;)
+
+            self.combat = fight.Combat(player=self.player, display=self.screen)
+
+            return None
+        validname = False
+
+        while not validname:
+            self.tell(&#34;Quel est tom nom, aventurier?\n&#34;, style=&#39;bold gold1&#39;)
+            name = input(&#39;&gt;&gt;&gt; &#39;)
+            if len(name)&gt;25:
+                self.tell(&#34;Oh... On dirait que ce nom est trop long, peux-tu en essayer un autre?&#34;, style=&#39;bold gold1&#39;)
+                self.screen.menu(actions=[&#39;OK&#39;], text=&#34;[bold gold1]Oh... On dirait que ce nom est trop long, peux-tu en essayer un autre?[/bold gold1]&#34;)
+            elif name == &#39;&#39;:
+                self.tell(&#34;Oh... Ce nom ne fait malheureusement pas l&#39;affaire, essaye en un autre.&#34;, style=&#39;bold gold1&#39;)
+                self.screen.menu(actions=[&#39;OK&#39;], text=&#34;[bold gold1]Oh... Ce nom ne fait malheureusement pas l&#39;affaire, essaye en un autre.[/bold gold1]&#34;)
+            else:
+                validname = True
+
+        self.tell(f&#34;Donc ton nom est [bold green]{name}[/bold green]... Et quelle est ta classe?&#34;, style=&#39;bold gold1&#39;)
+        self.player = characterbuilder.Build.create_player(name=name, playerclass=self.screen.menu(actions=[&#39;Archer&#39;, &#39;Knight&#39;, &#39;Mage&#39;, &#39;Warrior&#39;], text=f&#34;[bold gold1]Donc ton nom est [bold green]{name}[/bold green]... Et quelle est ta classe?[/bold gold1]\n&#34;))
+
+        self.tell(f&#34;On dirait que tu t&#39;es réveillé dans {self.currentzone.type}...&#34;, style=&#39;bold gold1&#39;)
+
+        self.combat = fight.Combat(player=self.player, display=self.screen)
+            
+    def tell(self, string: str, style: str | None = None) -&gt; None:
+        &#34;&#34;&#34;
+        Affiche un texte caractère par caractère
+        &#34;&#34;&#34;
+        fragment = &#39;&#39;
+        slowdown = (&#39;,&#39;,&#39;.&#39;, &#39;?&#39;, &#39;!&#39;)
+        closing = False
+        for i in string:
+            if i != &#34;[&#34; and not closing:
+                fragment += i
+                self.screen.clear()
+                self.screen.print(fragment, style=style)
+                sleep(0.05 if i not in slowdown else 0.3)
+            else:
+                fragment +=i               
+                closing = True if i != &#34;]&#34; else False
+
+
+    def battle(self) -&gt; tuple:
+        &#34;&#34;&#34;
+        Crée des ennemies et lance un combat
+        &#34;&#34;&#34;
+        if self.currentzone.type.lower() == &#39;boss&#39;:
+            enemiesnumber = 1
+        else:
+            enemiesnumber = randint(1, 3)
+        enemies = list()
+        if enemiesnumber == 1 and randint(0, 100) &lt;= 5 and not self.currentzone.type.lower() == &#39;boss&#39;:
+            name = self.get_enemy(True)
+        else:
+            name = self.get_enemy()
+        for i in range(enemiesnumber):
+            enemies.append(characterbuilder.Build.create_enemy(name=name, lvl=self.get_level() if name not in self.specialmonsters else self.player.lvl, enemies=enemiesnumber, f=self.difficulty))
+        return self.combat.fight(*enemies)
+    
+    def get_enemy(self, special: bool = False) -&gt; str:
+        &#34;&#34;&#34;
+        Retourne un ennemi parmis ceux disponible dans la zone
+        &#34;&#34;&#34;
+        if self.currentzone.type.lower() == &#39;boss&#39;:
+            return &#39;seigneur stellaire&#39;
+        return choice(self.currentzone.monsters) if not special else choice(self.specialmonsters)
+    
+    def get_level(self) -&gt; int:
+        &#34;&#34;&#34;
+        Retourne un niveau d&#39;ennemi approprié par rapport à la zone et au joueur
+        &#34;&#34;&#34;
+        if self.currentzone.type.lower() == &#39;boss&#39;:
+            return 50
+        if self.currentzone.lvl[0] &gt; self.player.lvl:
+            return randint(self.currentzone.lvl[0], self.currentzone.lvl[0]+4)
+        chosenlvl = 9999
+        while chosenlvl &gt; self.player.lvl+1:
+            chosenlvl = randint(*self.currentzone.lvl)
+        return chosenlvl
+    
+    def global_menu(self):
+        &#34;&#34;&#34;
+        Gère le menu prinbcipal du jeu
+        &#34;&#34;&#34;
+        selected = self.screen.menu(actions=[&#39;Combattre&#39;, &#39;Sac&#39;, &#39;Boutique&#39;, &#39;Eglise&#39;, &#39;Carte&#39;, &#39;Quêtes&#39;, &#39;Quitter&#39;], text=self.screen.get_title(&#39;MENU&#39;))
+
+        match selected:
+            case &#39;Combattre&#39;:
+                result,  data = self.battle()
+                if result == &#39;flee&#39;:
+                    self.tell(&#39;Vous fuyez le combat...&#39;)
+                    goldloss = round(randint(5,10) * self.player.lvl)
+                    self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Vous perdez {goldloss} pièces :money_bag: pendant votre fuite!&#39;)
+                    self.player.argent -= goldloss
+                    if self.player.argent &lt; 0: self.player.argent = 0
+                elif result:
+                    pass
+                else:
+                    self.respawn()
+                self.update_quests(data)
+                if randint(0,100) &gt;= 90:
+                    self.get_event()
+
+            case &#39;Sac&#39;:
+                self.sac()
+
+            case &#39;Boutique&#39;:
+                self.shop()
+                
+            case &#39;Eglise&#39;:
+                self.eglise()
+
+            case &#39;Carte&#39;:
+                actions = [&#39;Zone suivante&#39;, &#39;Retour&#39;] if self.currentzone == self.region[0] else [&#39;Zone précédente&#39;, &#39;Retour&#39;] if self.currentzone == self.region[-1] else [&#39;Zone suivante&#39;, &#39;Zone précédente&#39;, &#39;Retour&#39;]
+                selected = self.screen.menu(actions=actions, text=self.screen.get_map(self.region, self.currentzone))
+                match selected:
+                    case &#39;Zone suivante&#39;:
+                        if self.is_quest_done(self.quests[self.region.index(self.currentzone)+1]):
+                            self.currentzone = self.region[self.region.index(self.currentzone)+1]
+                            self.screen.menu(actions=[&#39;OK&#39;], text=self.screen.get_map(self.region, self.currentzone), info=f&#39;Vous entrez dans {self.currentzone.name}&#39;)
+                        else: 
+                             self.screen.menu(actions=[&#39;OK&#39;], text=self.screen.get_map(self.region, self.currentzone), info=f&#34;[bold bright_red]Vous devez d&#39;abord terminer la quête {self.region.index(self.currentzone)+1}: {self.quests[self.region.index(self.currentzone)+1][0]}&#34;)
+
+                    case &#39;Zone précédente&#39;:
+                        self.currentzone = self.region[self.region.index(self.currentzone)-1]
+                        self.screen.menu(actions=[&#39;OK&#39;], text=self.screen.get_map(self.region, self.currentzone), info=f&#39;Vous entrez dans {self.currentzone.name}&#39;)
+
+                    case _:
+                        pass
+
+            case &#39;Quêtes&#39;:
+                self.screen.menu(actions=[&#39;OK&#39;], text=self.screen.get_quests(self.quests))
+
+            case &#39;Quitter&#39;:
+                self.quit()
+
+    def is_quest_done(self, quest: list) -&gt; bool:
+        &#34;&#34;&#34;
+        Vérifie si une quête est terminée
+        &#34;&#34;&#34;
+        return quest[1] &gt;= quest[2]
+    
+    def update_quests(self, data: tuple):
+        &#34;&#34;&#34;
+        Met à jour les quêtes
+        &#34;&#34;&#34;
+        kills, dmg = data
+        for quest in self.quests.keys():
+            if self.quests[quest][3] == &#39;kill&#39;:
+                self.quests[quest][1] += kills
+            elif self.quests[quest][3] == &#39;dmg&#39;:
+                self.quests[quest][1] += dmg
+
+    def eglise(self, respawn: bool = False) -&gt; None:
+        &#34;&#34;&#34;
+        Permet au joueur de récupérer ses points de vies et des potions
+        &#34;&#34;&#34;
+        if not respawn:
+            self.tell(string=&#34;Vous vous rendez à l&#39;église pour prier...&#34;)
+        self.screen.menu(actions=[&#39;OK&#39;], text=&#39;Vos [bold green]PV[/bold green] et [bold bright_red]Potions[/bold bright_red] ont été restaurés!&#39;)
+        self.player.pv = self.player.maxpv
+        self.player.bag.potions = 2
+
+    def respawn(self) -&gt; None:
+        &#34;&#34;&#34;
+        Appelé quand le joueur meurt lors d&#39;un combat
+        &#34;&#34;&#34;
+        self.tell(string=&#34;Vous vous réveillez à l&#39;église...&#34;)
+        goldloss = round(randint(5,10) * self.player.lvl)
+        self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Vous avez perdu {goldloss} pièces :money_bag:!&#39;)
+        self.player.argent -= goldloss
+        if self.player.argent &lt; 0: self.player.argent = 0
+        self.eglise(True)
+
+    def shop(self) -&gt; None:
+        &#34;&#34;&#34;
+        Permet de gérer l&#39;interaction avec la boutique
+        &#34;&#34;&#34;
+        if self.currentzone.shopfirsttime:
+            text = self.currentzone.shop.Direbonjour()
+            self.tell(text)
+            self.screen.menu(actions=[&#39;OK&#39;], text=text)
+            self.currentzone.shopfirsttime = False
+        while True:
+            liste = list()
+            for i in self.currentzone.shop.afficher_inventaire():
+                liste.append(str(i) + f&#39; -&gt; {round(i.prix * (1 - self.currentzone.shop.reduction / 100))} pièces&#39;)
+            liste.append(&#39;Back&#39;)
+            selected = self.screen.menu(actions=liste, text=f&#39;Vous avez {self.player.argent} pièces&#39;)
+            match selected:
+                case &#39;Back&#39;:
+                    return
+                
+                case _:
+                    self.screen.menu(actions=[&#39;OK&#39;], text=self.currentzone.shop.acheter_objet(selected.split(&#39;:&#39;)[0], self.player))
+
+    def sac(self) -&gt; None:
+        &#34;&#34;&#34;
+        Affiche un menu avec le contenu du sac
+        &#34;&#34;&#34;
+        self.screen.menu(actions=[&#39;OK&#39;], text=self.affichagesac(self.player.bag.afficherobjs()))
+
+    def affichagesac(self, dico: dict) -&gt; str:
+        &#34;&#34;&#34;
+        Retourne le contenu du sac
+        &#34;&#34;&#34;
+        string = f&#39;Pièces :money_bag:: {self.player.argent}\n\n&#39;
+        for key in dico:
+            string += key + &#39;:\n&#39;
+            if len(dico[key]) == 0:
+                string += &#39;  /\n\n&#39;
+            else:
+                i = 0
+                for item in dico[key]:
+                    i += 1
+                    if len(dico[key]) &gt; i:
+                        string += &#39;  - &#39; + str(item) + &#39;\n&#39;
+                    else:
+                        string += &#39;  - &#39; + str(item) + &#39;\n\n&#39;      
+        return string
+    
+    def get_event(self) -&gt; None:
+        &#34;&#34;&#34;
+        Appelé lorsqu&#39;on veut lancer un événement. Gère l&#39;affichage et les effets d&#39;un evenement tiré au hasard
+        &#34;&#34;&#34;
+        self.screen.menu(actions=[&#39;OK&#39;], text=&#39;Oh! Un évenement se déclenche!&#39;)
+        texte, catego, montant = self.event.evenement()
+        self.screen.menu(actions=[&#39;OK&#39;], text=texte)
+        match catego:
+            case &#39;argent&#39;:
+                self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Vous gagnez {montant} pièces&#39; if montant&gt;0 else f&#39;Vous perdez {abs(montant)} pièces&#39;)
+                self.player.argent += self.player.calc_stat(montant, &#39;xp&#39;)
+                if self.player.argent &lt; 0: self.player.argent = 0
+            case &#39;pv&#39;:
+                self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Votre statistique de points de vie augmente de {montant}&#39; if montant&gt;0 else f&#39;Votre statistique de points de vie diminue de {abs(montant)}&#39;)
+                self.player.basepv += montant
+                if self.player.basepv &lt; 1: self.player.basepv = 1
+                self.player.maxpv = self.player.calc_stat(self.player.basepv, &#39;pv&#39;)
+            case &#39;atk&#39;:
+                self.screen.menu(actions=[&#39;OK&#39;], text=f&#34;Votre statistique d&#39;attaque augmente de {montant}&#34; if montant&gt;0 else f&#34;Votre statistique de d&#39;attaque diminue de {abs(montant)}&#34;)
+                self.player.atk += montant
+                if self.player.atk &lt; 1: self.player.atk = 1
+            case &#39;def&#39;:
+                self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Votre statistique de défense augmente de {montant}&#39; if montant&gt;0 else f&#39;Votre statistique de défense diminue de {abs(montant)}&#39;)
+                self.player.arm += montant
+                if self.player.arm &lt; 0: self.player.arm = 0
+            case &#39;stuff&#39;:
+                if montant &lt; 0:
+                    if not self.player.bag.estvide():
+                        objet = None
+                        while objet == None :
+                            cat = choice(list(self.player.bag.Stuf.keys()))
+                            if not len(self.player.bag.Stuf[cat]) == 0:
+                                objet = choice(self.player.bag.Stuf[cat]) if len(self.player.bag.Stuf[cat]) &gt; 1 else self.player.bag.Stuf[cat][0]
+                        self.player.bag.enleverobj(objet, self.player)
+                        self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Vous perdez {objet}!&#39;)
+                    else:
+                        self.screen.menu(actions=[&#39;OK&#39;], text=f&#34;Vous n&#39;avez pas d&#39;objets à perdre&#34;)
+                else:
+                    cat = choice([&#39;Dégats&#39;, &#39;Spécial&#39;, &#39;Vitesse&#39;, &#39;Defense&#39;])
+                    obj = choice(self.currentzone.shop.Objets[cat])
+                    self.player.bag.ajouterobj(obj, self.player)
+                    self.screen.menu(actions=[&#39;OK&#39;], text=f&#39;Vous avez gagné {obj}!&#39;)
+            case &#39;double&#39;:
+                selected = self.screen.menu(actions=[&#39;Oui&#39;, &#39;Non&#39;], text=f&#39;Voulez vous tenter votre chance?&#39;)
+                match selected:
+                    case &#39;Oui&#39;:
+                        if randint(0,100)&gt;=50:
+                            self.screen.menu(actions=[&#39;OK&#39;], text=&#39;Vous avez gagné votre pari! Vos pièces ont été doublées&#39;)
+                        else:
+                            self.screen.menu(actions=[&#39;OK&#39;], text=&#39;Vous avez perdu!&#39;)
+                    case _:
+                        pass
+    
+    def quit(self) -&gt; None:
+        &#34;&#34;&#34;
+        Appelé pour quitter le jeu
+        &#34;&#34;&#34;
+        if self.screen.menu(actions=[&#39;Oui&#39;, &#39;Non&#39;], text=&#39;Êtes vous sûr de vouloir quitter?&#39;) == &#39;Oui&#39;:
+            exit(1)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="RPG.game.RPG.affichagesac"><code class="name flex">
+<span>def <span class="ident">affichagesac</span></span>(<span>self, dico: dict) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retourne le contenu du sac</p><br><img src="./imgs/RPG.affichagesac.PNG"></div>
+</dd>
+<dt id="RPG.game.RPG.battle"><code class="name flex">
+<span>def <span class="ident">battle</span></span>(<span>self) ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Crée des ennemies et lance un combat</p><br><img src="./gifs/game/RPG.battle.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.eglise"><code class="name flex">
+<span>def <span class="ident">eglise</span></span>(<span>self, respawn: bool = False) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Permet au joueur de récupérer ses points de vies et des potions</p><br><img src="./gifs/game/RPG.eglise.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.get_enemy"><code class="name flex">
+<span>def <span class="ident">get_enemy</span></span>(<span>self, special: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retourne un ennemi parmis ceux disponible dans la zone</p><br><img src="./gifs/game/RPG.get_enemy.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.get_event"><code class="name flex">
+<span>def <span class="ident">get_event</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appelé lorsqu'on veut lancer un événement. Gère l'affichage et les effets d'un evenement tiré au hasard</p><br><img src="./gifs/game/RPG.get_event.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.get_level"><code class="name flex">
+<span>def <span class="ident">get_level</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retourne un niveau d'ennemi approprié par rapport à la zone et au joueur</p><br><img src="./gifs/game/RPG.get_level.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.global_menu"><code class="name flex">
+<span>def <span class="ident">global_menu</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gère le menu prinbcipal du jeu</p><br><img src="./gifs/game/RPG.global_menu.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.is_quest_done"><code class="name flex">
+<span>def <span class="ident">is_quest_done</span></span>(<span>self, quest: list) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Vérifie si une quête est terminée</p><br><img src="./gifs/game/RPG.is_quest_done.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.quit"><code class="name flex">
+<span>def <span class="ident">quit</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appelé pour quitter le jeu</p><br></div>
+</dd>
+<dt id="RPG.game.RPG.respawn"><code class="name flex">
+<span>def <span class="ident">respawn</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appelé quand le joueur meurt lors d'un combat</p><br><img src="./gifs/game/RPG.respawn.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.sac"><code class="name flex">
+<span>def <span class="ident">sac</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Affiche un menu avec le contenu du sac</p><br><img src="./imgs/RPG.sac.PNG"></div>
+</dd>
+<dt id="RPG.game.RPG.shop"><code class="name flex">
+<span>def <span class="ident">shop</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Permet de gérer l'interaction avec la boutique</p><br><img src="./gifs/game/RPG.shop.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.tell"><code class="name flex">
+<span>def <span class="ident">tell</span></span>(<span>self, string: str, style: str | None = None) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Affiche un texte caractère par caractère</p><br><img src="./gifs/game/RPG.tell.gif"></div>
+</dd>
+<dt id="RPG.game.RPG.update_quests"><code class="name flex">
+<span>def <span class="ident">update_quests</span></span>(<span>self, data: tuple)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Met à jour les quêtes</p><br><img src=""></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="RPG" href="index.html">RPG</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="RPG.game.RPG" href="#RPG.game.RPG">RPG</a></code></h4>
+<ul class="two-column">
+<li><code><a title="RPG.game.RPG.affichagesac" href="#RPG.game.RPG.affichagesac">affichagesac</a></code></li>
+<li><code><a title="RPG.game.RPG.battle" href="#RPG.game.RPG.battle">battle</a></code></li>
+<li><code><a title="RPG.game.RPG.eglise" href="#RPG.game.RPG.eglise">eglise</a></code></li>
+<li><code><a title="RPG.game.RPG.get_enemy" href="#RPG.game.RPG.get_enemy">get_enemy</a></code></li>
+<li><code><a title="RPG.game.RPG.get_event" href="#RPG.game.RPG.get_event">get_event</a></code></li>
+<li><code><a title="RPG.game.RPG.get_level" href="#RPG.game.RPG.get_level">get_level</a></code></li>
+<li><code><a title="RPG.game.RPG.global_menu" href="#RPG.game.RPG.global_menu">global_menu</a></code></li>
+<li><code><a title="RPG.game.RPG.is_quest_done" href="#RPG.game.RPG.is_quest_done">is_quest_done</a></code></li>
+<li><code><a title="RPG.game.RPG.quit" href="#RPG.game.RPG.quit">quit</a></code></li>
+<li><code><a title="RPG.game.RPG.respawn" href="#RPG.game.RPG.respawn">respawn</a></code></li>
+<li><code><a title="RPG.game.RPG.sac" href="#RPG.game.RPG.sac">sac</a></code></li>
+<li><code><a title="RPG.game.RPG.shop" href="#RPG.game.RPG.shop">shop</a></code></li>
+<li><code><a title="RPG.game.RPG.tell" href="#RPG.game.RPG.tell">tell</a></code></li>
+<li><code><a title="RPG.game.RPG.update_quests" href="#RPG.game.RPG.update_quests">update_quests</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>
